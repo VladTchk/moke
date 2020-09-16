@@ -1,55 +1,66 @@
 <template>
-  <div>
+  <div class="wrapper">
+    <div id="nav">
+      <nuxt-link to="/">Home</nuxt-link>
+      |
+      <nuxt-link to="/faq">Поддержка</nuxt-link>
+      |
+      <nuxt-link to="/profile">Пользиватель</nuxt-link>
+      |
+      <nuxt-link to="/catalog">Каталог</nuxt-link>
+      |
+      <nuxt-link to="/goods">Каталог фильтр</nuxt-link>
+      |
+      <nuxt-link to="/order">Оформление заказа</nuxt-link>
+      |
+      <nuxt-link to="/premium">Premium</nuxt-link>
+    </div>
+
+    <Sprite />
+    <Nav />
+    <Header />
+    <!-- Page Content -->
     <Nuxt />
+    <!-- / Page Content  -->
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+import Sprite from '@/components/layouts/Sprite'
+import Header from '@/components/layouts/Header'
+import Nav from '@/components/layouts/Nav'
+
+export default {
+  name: 'Layout',
+  components: {
+    Sprite,
+    Header,
+    Nav,
+  },
+}
+</script>
+
+<style lang="scss">
+#app {
+  width: 100%;
+  height: 100%;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
+#nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(#fff, 0.9);
+  padding: 0.3rem;
+  z-index: 1000;
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+  a {
+    margin: 0 0.7rem;
+    display: block;
+  }
 }
 </style>
