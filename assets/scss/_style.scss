@@ -321,7 +321,7 @@ body.overflow {
   align-items: center;
   width: 9rem;
   height: 4.6rem;
-  background: #74b140;
+  background: #adc8a8;
 
   &__backet {
     width: 100%;
@@ -1284,7 +1284,8 @@ body.overflow {
     left: 0;
     top: 0;
     mix-blend-mode: difference;
-    span{
+
+    span {
       padding: 0.5rem;
       background-color: #fff;
       border-radius: 50%;
@@ -1292,8 +1293,9 @@ body.overflow {
       transition: transform 0.3s ease, opacity 0.3s ease;
       display: block;
     }
-    &.active{
-      span{
+
+    &.active {
+      span {
         transform: translate(-50%, -50%) scale(8);
         opacity: 1;
       }
@@ -1552,7 +1554,7 @@ body.overflow {
     flex: 1 1;
     cursor: pointer;
     margin: .8rem;
-    overflow: hidden;
+    //overflow: hidden;
 
     @include r($md) {
       margin-right: 1.5rem;
@@ -1603,7 +1605,7 @@ body.overflow {
     span {
       width: 3.2rem;
       height: 1.8rem;
-      background-color: #000;
+      background-color: #313745;
       border-radius: 3em;
       position: relative;
       transition: all .2s ease-in-out;
@@ -1693,19 +1695,22 @@ body.overflow {
       transition: all .2s ease-in-out;
 
       &.active {
-        background-color: #000;
+        background-color: #313745;
         color: #fff;
       }
     }
   }
 
   &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0;
     border: 0;
     box-shadow: none;
     width: 4.6rem;
     height: 4.6rem;
-    background: #b19266;
+    background: #313745;
     font-size: 2.5rem;
     color: #fff;
     cursor: pointer;
@@ -1747,8 +1752,12 @@ body.overflow {
     overflow: auto;
     flex: 0 0 9rem;
     text-align: center;
-    background-color: #fff;
+    background-color: rgba(#fff, .75);
     padding: 1.8rem .5rem 1rem;
+    transition: all .3s ease-in-out;
+    &:hover{
+      background-color: rgba(#fff, 1);
+    }
     @include r($lg) {
       padding: 1rem .5rem;
       flex-wrap: wrap;
@@ -1785,8 +1794,12 @@ body.overflow {
   &__middle {
     flex: 1 1;
     overflow: auto;
-    background-color: #fff;
+    background-color: rgba(#fff, .75);
     padding: 2.1rem 2.5rem 2.5rem 2.5rem;
+    transition: all .3s ease-in-out;
+    &:hover{
+      background-color: rgba(#fff, 1);
+    }
     @include r($md) {
       padding: 2rem 1rem;
     }
@@ -1803,8 +1816,7 @@ body.overflow {
 
   &__show {
     width: 100%;
-    background: none;
-    background-image: linear-gradient(to bottom, rgba(158, 172, 187, 0.5), rgba(158, 172, 187, 0.5)), linear-gradient(to right, #ddf0d5, #e9eccf, #f3d8d6, #e0d1df, #d0e8ec);
+    background: #313745;
     padding: 1.05rem 2.5rem;
     display: flex;
     justify-content: space-between;
@@ -1821,7 +1833,8 @@ body.overflow {
     transition: background-color .3s ease-in-out;
 
     &.active {
-      background-color: #b19266;
+      background-color: #f2f1ec;
+      color: #000;
 
       svg {
         transform: rotate(90deg);
@@ -1895,7 +1908,7 @@ body.overflow {
         opacity: 0;
 
         &:checked ~ span {
-          background-color: #000;
+          background-color: #313745;
           color: #fff;
         }
       }
@@ -1945,7 +1958,7 @@ body.overflow {
     cursor: pointer;
     width: 9rem;
     height: 4.4rem;
-    background: #b19266;
+    background: #bfcdd6;
     padding: .5rem .3rem;
     font-size: 1.6rem;
     font-weight: bold;
@@ -1975,6 +1988,7 @@ body.overflow {
   padding: 0 .5rem 3.5rem 0;
   text-align: center;
   overflow: auto;
+  align-self: center;
   @include rmin(1600) {
     flex: 0 0 20%;
   }
@@ -2040,6 +2054,11 @@ body.overflow {
     margin-bottom: 1rem;
     padding: 1.4rem .5rem;
 
+    &-dark{
+      background-color: #bfcdd6;
+      color: #fff;
+    }
+
     &.gradient {
       color: #b19266;
       margin: .3rem .3rem 1.3rem;
@@ -2067,14 +2086,14 @@ body.overflow {
   &__bottom {
 
     @include rmin(1600) {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -.5rem;
-      .tobacco__btn {
-        margin-left: .5rem;
-        margin-right: .5rem;
-        flex: 1 1 auto;
-      }
+      //display: flex;
+      //flex-wrap: wrap;
+      //margin: 0 -.5rem;
+      //.tobacco__btn {
+      //  margin-left: .5rem;
+      //  margin-right: .5rem;
+      //  flex: 1 1 auto;
+      //}
     }
   }
 
@@ -2652,7 +2671,7 @@ body.overflow {
       line-height: 1.5;
       text-align: center;
       color: #fff;
-      background-color: #000;
+      background-color: #313745;
       display: block;
       padding: 1.4rem 1rem;
       text-decoration: none;
@@ -2741,7 +2760,7 @@ body.overflow {
     }
 
     &-2 {
-      background: #b19ffe;
+      background: #afa8c8;
 
       .profile__item_title {
         margin: .5rem 0 .5rem;

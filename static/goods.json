@@ -63,26 +63,24 @@
         }
       ],
       "available": true,
-      "taste": [
-        {
-          "basic": [
-            "first",
-            "third"
-          ],
-          "shades": [
-            "first",
-            "third"
-          ],
-          "notes": [
-            "first",
-            "third"
-          ],
-          "type": [
-            "first",
-            "third"
-          ]
-        }
-      ]
+      "taste": {
+        "basic": [
+          "first",
+          "third"
+        ],
+        "shades": [
+          "first",
+          "third"
+        ],
+        "notes": [
+          "first",
+          "third"
+        ],
+        "type": [
+          "first",
+          "third"
+        ]
+      }
     },
     {
       "id": 2,
@@ -146,26 +144,24 @@
         }
       ],
       "available": true,
-      "taste": [
-        {
-          "basic": [
-            "first",
-            "second"
-          ],
-          "shades": [
-            "first",
-            "second"
-          ],
-          "notes": [
-            "first",
-            "second"
-          ],
-          "type": [
-            "first",
-            "second"
-          ]
-        }
-      ]
+      "taste": {
+        "basic": [
+          "first",
+          "second"
+        ],
+        "shades": [
+          "first",
+          "second"
+        ],
+        "notes": [
+          "first",
+          "second"
+        ],
+        "type": [
+          "first",
+          "second"
+        ]
+      }
     },
     {
       "id": 3,
@@ -229,26 +225,24 @@
         }
       ],
       "available": true,
-      "taste": [
-        {
-          "basic": [
-            "first",
-            "second"
-          ],
-          "shades": [
-            "first",
-            "second"
-          ],
-          "notes": [
-            "first",
-            "second"
-          ],
-          "type": [
-            "first",
-            "second"
-          ]
-        }
-      ]
+      "taste": {
+        "basic": [
+          "third",
+          "second"
+        ],
+        "shades": [
+          "first",
+          "second"
+        ],
+        "notes": [
+          "first",
+          "second"
+        ],
+        "type": [
+          "first",
+          "second"
+        ]
+      }
     },
     {
       "id": 4,
@@ -312,26 +306,25 @@
         }
       ],
       "available": true,
-      "taste": [
-        {
-          "basic": [
-            "first",
-            "second"
-          ],
-          "shades": [
-            "first",
-            "second"
-          ],
-          "notes": [
-            "first",
-            "second"
-          ],
-          "type": [
-            "first",
-            "second"
-          ]
-        }
-      ]
+      "taste":
+      {
+        "basic": [
+          "first",
+          "second"
+        ],
+        "shades": [
+          "first",
+          "second"
+        ],
+        "notes": [
+          "first",
+          "second"
+        ],
+        "type": [
+          "first",
+          "second"
+        ]
+      }
     },
     {
       "id": 5,
@@ -395,26 +388,25 @@
         }
       ],
       "available": true,
-      "taste": [
-        {
-          "basic": [
-            "first",
-            "second"
-          ],
-          "shades": [
-            "first",
-            "second"
-          ],
-          "notes": [
-            "first",
-            "second"
-          ],
-          "type": [
-            "first",
-            "second"
-          ]
-        }
-      ]
+      "taste":
+      {
+        "basic": [
+          "first",
+          "second"
+        ],
+        "shades": [
+          "first",
+          "second"
+        ],
+        "notes": [
+          "first",
+          "second"
+        ],
+        "type": [
+          "first",
+          "second"
+        ]
+      }
     }
   ]
 }

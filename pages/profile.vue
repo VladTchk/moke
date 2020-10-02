@@ -70,12 +70,6 @@
 
     <div class="order__right">
       <div class="order__top grid__top">
-        <a href="#" class="order__print">
-          <svg class="icon">
-            <use xlink:href="#printer" />
-          </svg>
-        </a>
-
         <UserNav />
       </div>
 

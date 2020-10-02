@@ -3,7 +3,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  ssr: true,
+  mode: 'spa',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -29,7 +29,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/css/vendor.css', '~/assets/scss/main.scss'],
+  css: [
+    '~/assets/css/vendor.css',
+    '~/assets/scss/main.scss',
+    'vue-multiselect/dist/vue-multiselect.min.css',
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

@@ -2,6 +2,9 @@
   <div class="catalog__goods">
     <div class="catalog__name">
       <span>{{ item.name }}</span>
+      <span
+        ><small>{{ item.taste.basic }}</small></span
+      >
     </div>
     <div class="catalog__select">
       <label

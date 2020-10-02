@@ -46,56 +46,93 @@
           <div class="catalog__selected">Base</div>
           <div class="catalog__selected">Core</div>
           <div class="catalog__selected">Rare</div>
+          <!--          <div class="catalog__select">-->
+          <!--            <label v-for="i in 3" :key="i" class="catalog__select_item">-->
+          <!--              <input type="radio" :name="'goods_'" :checked="i === 0" />-->
+          <!--              <span>dd {{ i }}</span>-->
+          <!--            </label>-->
+          <!--          </div>-->
         </div>
-        <div class="catalog__filter">
+        <div class="catalog__filter" :class="{ active: isOpenFilters }">
           <label class="catalog__label">
-            <select
-              class="catalog__label_item select2-multiple"
-              data-placeholder="Базовый вкус"
-              name=""
-              multiple
+            <Multiselect
+              v-model="selectedVal"
+              :options="options"
+              :multiple="true"
+              :searchable="false"
+              placeholder="Базовый вкус"
+              :close-on-select="false"
+              :clear-on-select="false"
+              :preserve-search="true"
+              @input="setSelected"
             >
-              <option value="1">Базовый вкус 1</option>
-              <option value="2">Базовый вкус 2</option>
-              <option value="3">Базовый вкус 3</option>
-            </select>
+              <template
+                slot="selection"
+                slot-scope="{ values, search, isOpen }"
+              >
+                <span
+                  v-if="values.length && !isOpen"
+                  class="multiselect__single"
+                >
+                  Базовый вкус ({{ values.length }})
+                </span>
+                <span v-if="isOpen">Базовый вкус</span>
+              </template>
+            </Multiselect>
           </label>
-          <label class="catalog__label">
-            <select
-              class="catalog__label_item select2-multiple"
-              data-placeholder="Оттенок вкуса"
-              name="name_2"
-              multiple
-            >
-              <option value="1">Оттенок вкуса 1</option>
-              <option value="2">Оттенок вкуса 2</option>
-              <option value="3">Оттенок вкуса 3</option>
-            </select>
-          </label>
-          <label class="catalog__label">
-            <select
-              class="catalog__label_item select2-multiple"
-              data-placeholder="Ноты вкуса"
-              name="name_2"
-              multiple
-            >
-              <option value="1">Ноты вкуса</option>
-              <option value="2">Ноты вкуса</option>
-              <option value="3">Ноты вкуса</option>
-            </select>
-          </label>
-          <label class="catalog__label">
-            <select
-              class="catalog__label_item select2-multiple"
-              data-placeholder="Тип вкуса"
-              name="name_2"
-              multiple
-            >
-              <option value="1">Тип вкуса</option>
-              <option value="2">Тип вкуса</option>
-              <option value="3">Тип вкуса</option>
-            </select>
-          </label>
+          <!--          <label class="catalog__label">-->
+          <!--            <select-->
+          <!--              class="catalog__label_item select2-multiple"-->
+          <!--              data-placeholder="Базовый вкус"-->
+          <!--              name=""-->
+          <!--              multiple-->
+          <!--            >-->
+          <!--              <option value="1">Базовый вкус 1</option>-->
+          <!--              <option value="2">Базовый вкус 2</option>-->
+          <!--              <option value="3">Базовый вкус 3</option>-->
+          <!--            </select>-->
+          <!--          </label>-->
+
+          <!--          <label class="catalog__label">-->
+          <!--            <v-select :options="options"></v-select>-->
+          <!--          </label>-->
+
+          <!--          <label class="catalog__label">-->
+          <!--            <select-->
+          <!--              class="catalog__label_item select2-multiple"-->
+          <!--              data-placeholder="Оттенок вкуса"-->
+          <!--              name="name_2"-->
+          <!--              multiple-->
+          <!--            >-->
+          <!--              <option value="1">Оттенок вкуса 1</option>-->
+          <!--              <option value="2">Оттенок вкуса 2</option>-->
+          <!--              <option value="3">Оттенок вкуса 3</option>-->
+          <!--            </select>-->
+          <!--          </label>-->
+          <!--          <label class="catalog__label">-->
+          <!--            <select-->
+          <!--              class="catalog__label_item select2-multiple"-->
+          <!--              data-placeholder="Ноты вкуса"-->
+          <!--              name="name_2"-->
+          <!--              multiple-->
+          <!--            >-->
+          <!--              <option value="1">Ноты вкуса</option>-->
+          <!--              <option value="2">Ноты вкуса</option>-->
+          <!--              <option value="3">Ноты вкуса</option>-->
+          <!--            </select>-->
+          <!--          </label>-->
+          <!--          <label class="catalog__label">-->
+          <!--            <select-->
+          <!--              class="catalog__label_item select2-multiple"-->
+          <!--              data-placeholder="Тип вкуса"-->
+          <!--              name="name_2"-->
+          <!--              multiple-->
+          <!--            >-->
+          <!--              <option value="1">Тип вкуса</option>-->
+          <!--              <option value="2">Тип вкуса</option>-->
+          <!--              <option value="3">Тип вкуса</option>-->
+          <!--            </select>-->
+          <!--          </label>-->
         </div>
       </div>
 
@@ -103,7 +140,11 @@
         <button class="catalog__lang_btn active" type="button">En</button>
         <button class="catalog__lang_btn" type="button">Ru</button>
       </div>
-      <button class="catalog__toggle" type="button">
+      <button
+        class="catalog__toggle"
+        type="button"
+        @click="isOpenFilters = !isOpenFilters"
+      >
         <svg class="icon">
           <use xlink:href="#filter" />
         </svg>
@@ -124,6 +165,8 @@
       </ul>
 
       <div class="catalog__middle">
+        <h3>Select filter: {{ selectedVal }}</h3>
+        <br />
         <!--        <div-->
         <!--          v-for="item in alphabet"-->
         <!--          :key="item"-->
@@ -134,17 +177,19 @@
 
         <div class="catalog__list">
           <div class="catalog__item">
-            <template v-for="item in list">
-              <div
-                v-if="check(item.name[0])"
-                :id="letterTitle(item.name[0])"
-                :key="item.desc"
-                class="catalog__title"
-              >
-                {{ letterTitle(item.name[0]) }}
-              </div>
-              <ItemGoods :key="item.name" :item="item" />
-            </template>
+            <!--              <div-->
+            <!--                v-if="check(item.name[0])"-->
+            <!--                :id="letterTitle(item.name[0])"-->
+            <!--                :key="item.desc"-->
+            <!--                class="catalog__title"-->
+            <!--              >-->
+            <!--                {{ letterTitle(item.name[0]) }}-->
+            <!--              </div>-->
+            <ItemGoods
+              v-for="item in goodsFilter(list)"
+              :key="item.name"
+              :item="item"
+            />
           </div>
         </div>
       </div>
@@ -158,10 +203,11 @@
 import UserNav from '@/components/layouts/UserNav'
 import ItemGoods from '@/components/goods/item'
 import Tobacco from '@/components/goods/tobacco'
+import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'Goods',
-  components: { ItemGoods, UserNav, Tobacco },
+  components: { ItemGoods, UserNav, Tobacco, Multiselect },
   async fetch({ store }) {
     if (store.getters['goods/goods'].length === 0) {
       await store.dispatch('goods/fetch')
@@ -170,6 +216,10 @@ export default {
   data() {
     return {
       lastLetter: {}, // abcdefghijklmnopqrstuvwxyz
+      options: ['first', 'second', 'third'],
+      selectedVal: [],
+      basic: ['first', 'second', 'third'],
+      isOpenFilters: false,
     }
   },
   computed: {
@@ -188,6 +238,25 @@ export default {
       const check = this.lastLetter[letter.toLowerCase()] === undefined
       this.lastLetter[letter.toLowerCase()] = 0
       return check
+    },
+    setSelected(value) {
+      // eslint-disable-next-line no-console
+      console.log('setSelected', value)
+      this.selectedVal = value
+    },
+    goodsFilter(list) {
+      // eslint-disable-next-line no-console
+      // console.log('selectedVal: ' + this.selectedVal)
+      const filtered = list.filter((item) => {
+        const is = this.selectedVal.every((word) => {
+          return item.taste.basic.includes(word)
+        })
+        return is
+      })
+      // eslint-disable-next-line no-console
+      // console.log(filtered)
+
+      return filtered
     },
   },
   head: {
