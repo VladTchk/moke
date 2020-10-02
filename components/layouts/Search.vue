@@ -7,6 +7,7 @@
       <div class="search__top">
         <label class="search__label">
           <input
+            ref="search__input"
             type="text"
             class="search__input"
             placeholder="Поиск..."
@@ -40,20 +41,26 @@ export default {
   data() {
     return {
       isActive: false,
+      body: document.querySelector('body'),
     }
   },
   mounted() {
     this.$root.$on('showSearch', () => {
-      const body = document.querySelector('body')
-      body.classList.add('overflow')
+      this.body.classList.add('overflow')
       this.isActive = true
+      this.body.addEventListener('keydown', this.keyCheck)
     })
   },
   methods: {
     closeSearch() {
-      const body = document.querySelector('body')
-      body.classList.remove('overflow')
+      this.body.classList.remove('overflow')
       this.isActive = false
+      this.body.removeEventListener('keydown', this.keyCheck)
+    },
+    keyCheck(e) {
+      if (e.keyCode === 27) {
+        this.closeSearch()
+      }
     },
   },
 }

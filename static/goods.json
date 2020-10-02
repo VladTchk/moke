@@ -1,0 +1,420 @@
+{
+  "count": 2,
+  "list": [
+    {
+      "id": 1,
+      "name": "DARKSIDE Bananapapa",
+      "maker": "DARKSIDE",
+      "desc": "DARKSIDE Bananapapa - это яркий вкус",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base"
+            },
+            {
+              "price": 200,
+              "name": "Core"
+            },
+            {
+              "price": 300,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 400,
+              "name": "Base"
+            },
+            {
+              "price": 500,
+              "name": "Core"
+            },
+            {
+              "price": 600,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 250,
+          "set": [
+            {
+              "price": 700,
+              "name": "Base"
+            },
+            {
+              "price": 800,
+              "name": "Core"
+            },
+            {
+              "price": 900,
+              "name": "Rare"
+            }
+          ]
+        }
+      ],
+      "available": true,
+      "taste": [
+        {
+          "basic": [
+            "first",
+            "third"
+          ],
+          "shades": [
+            "first",
+            "third"
+          ],
+          "notes": [
+            "first",
+            "third"
+          ],
+          "type": [
+            "first",
+            "third"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ARKSIDE Bananapapa",
+      "maker": "ARKSIDE",
+      "desc": "ARKSIDE Bananapapa - это яркий вкус",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base"
+            },
+            {
+              "price": 200,
+              "name": "Core"
+            },
+            {
+              "price": 300,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 400,
+              "name": "Base"
+            },
+            {
+              "price": 500,
+              "name": "Core"
+            },
+            {
+              "price": 600,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 250,
+          "set": [
+            {
+              "price": 700,
+              "name": "Base"
+            },
+            {
+              "price": 800,
+              "name": "Core"
+            },
+            {
+              "price": 900,
+              "name": "Rare"
+            }
+          ]
+        }
+      ],
+      "available": true,
+      "taste": [
+        {
+          "basic": [
+            "first",
+            "second"
+          ],
+          "shades": [
+            "first",
+            "second"
+          ],
+          "notes": [
+            "first",
+            "second"
+          ],
+          "type": [
+            "first",
+            "second"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "KARKSIDE Bananapapa",
+      "maker": "KARKSIDE",
+      "desc": "KARKSIDE Bananapapa - это яркий вкус",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base"
+            },
+            {
+              "price": 200,
+              "name": "Core"
+            },
+            {
+              "price": 300,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 400,
+              "name": "Base"
+            },
+            {
+              "price": 500,
+              "name": "Core"
+            },
+            {
+              "price": 600,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 250,
+          "set": [
+            {
+              "price": 700,
+              "name": "Base"
+            },
+            {
+              "price": 800,
+              "name": "Core"
+            },
+            {
+              "price": 900,
+              "name": "Rare"
+            }
+          ]
+        }
+      ],
+      "available": true,
+      "taste": [
+        {
+          "basic": [
+            "first",
+            "second"
+          ],
+          "shades": [
+            "first",
+            "second"
+          ],
+          "notes": [
+            "first",
+            "second"
+          ],
+          "type": [
+            "first",
+            "second"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "CARKSIDE Bananapapa",
+      "maker": "CARKSIDE",
+      "desc": "CARKSIDE Bananapapa - это яркий вкус",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base"
+            },
+            {
+              "price": 200,
+              "name": "Core"
+            },
+            {
+              "price": 300,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 400,
+              "name": "Base"
+            },
+            {
+              "price": 500,
+              "name": "Core"
+            },
+            {
+              "price": 600,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 250,
+          "set": [
+            {
+              "price": 700,
+              "name": "Base"
+            },
+            {
+              "price": 800,
+              "name": "Core"
+            },
+            {
+              "price": 900,
+              "name": "Rare"
+            }
+          ]
+        }
+      ],
+      "available": true,
+      "taste": [
+        {
+          "basic": [
+            "first",
+            "second"
+          ],
+          "shades": [
+            "first",
+            "second"
+          ],
+          "notes": [
+            "first",
+            "second"
+          ],
+          "type": [
+            "first",
+            "second"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "DCARKSIDE Bananapapa",
+      "maker": "DCARKSIDE",
+      "desc": "DCARKSIDE Bananapapa - это яркий вкус",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base"
+            },
+            {
+              "price": 200,
+              "name": "Core"
+            },
+            {
+              "price": 300,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 400,
+              "name": "Base"
+            },
+            {
+              "price": 500,
+              "name": "Core"
+            },
+            {
+              "price": 600,
+              "name": "Rare"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 250,
+          "set": [
+            {
+              "price": 700,
+              "name": "Base"
+            },
+            {
+              "price": 800,
+              "name": "Core"
+            },
+            {
+              "price": 900,
+              "name": "Rare"
+            }
+          ]
+        }
+      ],
+      "available": true,
+      "taste": [
+        {
+          "basic": [
+            "first",
+            "second"
+          ],
+          "shades": [
+            "first",
+            "second"
+          ],
+          "notes": [
+            "first",
+            "second"
+          ],
+          "type": [
+            "first",
+            "second"
+          ]
+        }
+      ]
+    }
+  ]
+}

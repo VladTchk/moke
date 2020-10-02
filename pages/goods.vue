@@ -116,234 +116,80 @@
 
     <div class="catalog__main">
       <ul class="catalog__aside">
-        <li>
-          <a href="#" class="catalog__letter active">Aa</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter active">Bb</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Cc</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Dd</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ee</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ff</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Gg</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Hh</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ii</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Jj</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Kk</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ll</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Mm</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Nn</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Oo</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Pp</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Qq</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Rr</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ss</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Tt</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Uu</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Vv</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Ww</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Xx</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Yy</a>
-        </li>
-        <li>
-          <a href="#" class="catalog__letter">Zz</a>
+        <li v-for="item in alphabet" :key="item">
+          <a :href="'#' + letterTitle(item[0])" class="catalog__letter">
+            {{ letterTitle(item[0]) }}
+          </a>
         </li>
       </ul>
 
       <div class="catalog__middle">
+        <!--        <div-->
+        <!--          v-for="item in alphabet"-->
+        <!--          :key="item"-->
+        <!--          style="display: inline-block; margin: 0 2.5rem 1.5rem 0"-->
+        <!--        >-->
+        <!--          <h5>{{ item }}</h5>-->
+        <!--        </div>-->
+
         <div class="catalog__list">
-          <div v-for="i in 3" :key="i" class="catalog__item">
-            <div class="catalog__title">Aa {{ i }}</div>
-
-            <div v-for="y in 3" :key="y" class="catalog__goods">
-              <div class="catalog__name">
-                <span
-                  >Admiral Acbar Acbar Acbar Acbar Acbar Cereal {{ y }}</span
-                >
+          <div class="catalog__item">
+            <template v-for="item in list">
+              <div
+                v-if="check(item.name[0])"
+                :id="letterTitle(item.name[0])"
+                :key="item.desc"
+                class="catalog__title"
+              >
+                {{ letterTitle(item.name[0]) }}
               </div>
-
-              <div class="catalog__select">
-                <label class="catalog__select_item">
-                  <input type="radio" :name="'catalog_' + y + '_' + i" />
-                  <span>50гр</span>
-                </label>
-                <label class="catalog__select_item">
-                  <input
-                    type="radio"
-                    :name="'catalog_' + y + '_' + i"
-                    checked
-                  />
-                  <span>100гр</span>
-                </label>
-                <label class="catalog__select_item">
-                  <input type="radio" :name="'catalog_' + y + '_' + i" />
-                  <span>250гр</span>
-                </label>
-              </div>
-
-              <div class="catalog__select">
-                <label class="catalog__select_item">
-                  <input type="radio" :name="'catalog_2' + y + '_' + i" />
-                  <span>Base</span>
-                </label>
-                <label class="catalog__select_item">
-                  <input
-                    type="radio"
-                    :name="'catalog_2' + y + '_' + i"
-                    checked
-                  />
-                  <span>Core</span>
-                </label>
-                <label class="catalog__select_item">
-                  <input type="radio" :name="'catalog_2' + y + '_' + i" />
-                  <span>Rare</span>
-                </label>
-              </div>
-
-              <div class="catalog__count count">
-                <button class="count__minus" type="button">
-                  <svg class="icon">
-                    <use xlink:href="#minus" />
-                  </svg>
-                </button>
-                <label class="count__label">
-                  <input type="text" class="count__input" value="25" readonly />
-                </label>
-                <button class="count__plus" type="button">
-                  <svg class="icon">
-                    <use xlink:href="#plus" />
-                  </svg>
-                </button>
-              </div>
-              <div class="catalog__price">13 875 ₽</div>
-            </div>
+              <ItemGoods :key="item.name" :item="item" />
+            </template>
           </div>
         </div>
       </div>
 
-      <div class="tobacco">
-        <button class="tobacco__close" type="button">&times;</button>
-        <div class="tobacco__img">
-          <img src="@/assets/img/tabak_1.png" alt="tabak" />
-        </div>
-        <div class="tobacco__desc">
-          Табак для кальяна <b>DARKSIDE Bananapapa</b> - это яркий вкус
-          банановой жвачки. Дарк Сайд Бананапапа обладает фруктовым сладким
-          вкусом.
-        </div>
-        <div class="tobacco__bottom">
-          <a href="#" class="tobacco__btn">ЛУЧШИЕ СОЧЕТАНИЯ</a>
-          <a href="#" class="tobacco__btn">МИКСЫ</a>
-        </div>
-
-        <div class="tobacco__goods catalog__goods">
-          <div class="catalog__select">
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_1333" />
-              <span>50гр</span>
-            </label>
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_1333" />
-              <span>100гр</span>
-            </label>
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_1333" checked />
-              <span>250гр</span>
-            </label>
-          </div>
-
-          <div class="catalog__select">
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_2333" />
-              <span>Base</span>
-            </label>
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_2333" checked />
-              <span>Core</span>
-            </label>
-            <label class="catalog__select_item">
-              <input type="radio" name="catalog_2333" />
-              <span>Rare</span>
-            </label>
-          </div>
-
-          <div class="catalog__count count">
-            <button class="count__minus" type="button">
-              <svg class="icon">
-                <use xlink:href="#minus" />
-              </svg>
-            </button>
-            <label class="count__label">
-              <input type="text" class="count__input" value="25" readonly />
-            </label>
-            <button class="count__plus" type="button">
-              <svg class="icon">
-                <use xlink:href="#plus" />
-              </svg>
-            </button>
-          </div>
-          <div class="catalog__price">13 875 ₽</div>
-        </div>
-
-        <a href="#" class="tobacco__banner">
-          <img src="@/assets/img/tabak_2.png" alt="img" />
-        </a>
-      </div>
+      <Tobacco />
     </div>
   </div>
 </template>
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
+import ItemGoods from '@/components/goods/item'
+import Tobacco from '@/components/goods/tobacco'
+
 export default {
   name: 'Goods',
-  components: { UserNav },
+  components: { ItemGoods, UserNav, Tobacco },
+  async fetch({ store }) {
+    if (store.getters['goods/goods'].length === 0) {
+      await store.dispatch('goods/fetch')
+    }
+  },
+  data() {
+    return {
+      lastLetter: {}, // abcdefghijklmnopqrstuvwxyz
+    }
+  },
+  computed: {
+    list() {
+      return this.$store.getters['goods/goods']
+    },
+    alphabet() {
+      return 'abcdefghijklmnopqrstuvwxyz'.split('')
+    },
+  },
+  methods: {
+    letterTitle(letter) {
+      return letter.toUpperCase() + '' + letter.toLowerCase()
+    },
+    check(letter) {
+      const check = this.lastLetter[letter.toLowerCase()] === undefined
+      this.lastLetter[letter.toLowerCase()] = 0
+      return check
+    },
+  },
   head: {
     title: 'FiXmoke - Каталог бренду',
   },

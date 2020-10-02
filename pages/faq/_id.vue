@@ -8,7 +8,8 @@
 
     <div class="faq__content">
       <div class="faq__title faq__title-show">{{ title }}</div>
-      <div v-html="text"></div>
+	    <!-- eslint-disable-next-line -->
+	    <div v-html="text"></div>
     </div>
   </div>
 </template>

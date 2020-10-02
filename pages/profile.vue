@@ -126,30 +126,38 @@
         </div>
 
         <div class="profile__subtitle">Прошлый заказ</div>
-
-        <ul class="order__list">
-          <li v-for="i in 3" :key="i" class="order__item">
-            <div class="order__name">Barvy Orange</div>
-            <div class="order__size">100гр</div>
-            <div class="order__line">Core</div>
-            <div class="order__count count">
-              <button class="count__minus" type="button">
-                <svg class="icon">
-                  <use xlink:href="#minus" />
-                </svg>
-              </button>
-              <label class="count__label">
-                <input type="text" class="count__input" value="25" readonly />
-              </label>
-              <button class="count__plus" type="button">
-                <svg class="icon">
-                  <use xlink:href="#plus" />
-                </svg>
-              </button>
-            </div>
-            <div class="order__price">555 ₽</div>
-          </li>
-        </ul>
+        <br />
+        <button class="catalog__show active" type="button">
+          <span>DARKSIDE | <small>6 товаров</small></span>
+          <svg class="icon">
+            <use xlink:href="#login" />
+          </svg>
+        </button>
+        <div class="catalog__content">
+          <ul class="order__list">
+            <li v-for="i in 3" :key="i" class="order__item">
+              <div class="order__name">Barvy Orange</div>
+              <div class="order__size">100гр</div>
+              <div class="order__line">Core</div>
+              <div class="order__count count">
+                <button class="count__minus" type="button">
+                  <svg class="icon">
+                    <use xlink:href="#minus" />
+                  </svg>
+                </button>
+                <label class="count__label">
+                  <input type="text" class="count__input" value="25" readonly />
+                </label>
+                <button class="count__plus" type="button">
+                  <svg class="icon">
+                    <use xlink:href="#plus" />
+                  </svg>
+                </button>
+              </div>
+              <div class="order__price">555 ₽</div>
+            </li>
+          </ul>
+        </div>
 
         <button class="profile__more" type="button">
           Посмотреть полностью

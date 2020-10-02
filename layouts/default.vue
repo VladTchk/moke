@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <Fragment>
     <div id="nav">
       <nuxt-link to="/">Home</nuxt-link>
       |
@@ -17,18 +17,23 @@
     </div>
 
     <Sprite />
+    <Background />
     <Nav />
-    <Header />
-    <!-- Page Content -->
-    <Nuxt />
-    <!-- / Page Content  -->
-  </div>
+    <div class="wrapper">
+      <Header />
+      <!-- Page Content -->
+      <Nuxt />
+      <!-- / Page Content  -->
+    </div>
+  </Fragment>
 </template>
 
 <script>
 import Sprite from '@/components/layouts/Sprite'
 import Header from '@/components/layouts/Header'
 import Nav from '@/components/layouts/Nav'
+import Background from '@/components/layouts/Background'
+import { Fragment } from 'vue-fragment'
 
 export default {
   name: 'Layout',
@@ -36,6 +41,8 @@ export default {
     Sprite,
     Header,
     Nav,
+    Background,
+    Fragment,
   },
 }
 </script>
