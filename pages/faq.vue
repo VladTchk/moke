@@ -19,7 +19,7 @@
 
 <script>
 import Item from '@/components/faq/item'
-// import axios from 'axios'
+// import axios from 'axios
 
 export default {
   name: 'Faq',

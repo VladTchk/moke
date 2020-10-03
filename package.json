@@ -6,11 +6,12 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate --mode production",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,scss} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
-    "surge": "surge /Users/roman/Desktop/moke/dist/ yummy-sneeze.surge.sh"
+    "surge": "surge /Users/roman/Desktop/moke/dist/ yummy-sneeze.surge.sh",
+    "push": "yarn generate && yarn surge"
   },
   "dependencies": {
     "@nuxt/content": "^1.5.0",

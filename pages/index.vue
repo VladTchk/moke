@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <div class="grid__left">
-      <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
+      <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex _</a>
     </div>
   </div>
 </template>
