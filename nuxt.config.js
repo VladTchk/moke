@@ -30,15 +30,15 @@ export default {
    ** Global CSS
    */
   css: [
+    'vue-multiselect/dist/vue-multiselect.min.css',
     '~/assets/css/vendor.css',
     '~/assets/scss/main.scss',
-    'vue-multiselect/dist/vue-multiselect.min.css',
   ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/throttle.js'],
+  plugins: ['~/plugins/throttle.js', '~/plugins/vue-notifications'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -77,5 +77,10 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
+  loading: '~/components/layouts/Loading.vue',
   build: {},
+  env: {
+    baseUrl: 'https://fixmoke.ru/api',
+    // process.env.NODE_ENV === 'dev' ? 'https://fixmoke.ru/api' : '//yummy-sneeze.surge.sh/api',
+  },
 }

@@ -121,13 +121,18 @@
 
         <div class="profile__subtitle">Прошлый заказ</div>
         <br />
-        <button class="catalog__show active" type="button">
+        <button
+          class="catalog__show"
+          :class="{ active: openOrder }"
+          type="button"
+          @click="openOrder = !openOrder"
+        >
           <span>DARKSIDE | <small>6 товаров</small></span>
           <svg class="icon">
             <use xlink:href="#login" />
           </svg>
         </button>
-        <div class="catalog__content">
+        <SlideToggle class="catalog__content" :open="openOrder">
           <ul class="order__list">
             <li v-for="i in 3" :key="i" class="order__item">
               <div class="order__name">Barvy Orange</div>
@@ -151,7 +156,7 @@
               <div class="order__price">555 ₽</div>
             </li>
           </ul>
-        </div>
+        </SlideToggle>
 
         <button class="profile__more" type="button">
           Посмотреть полностью
@@ -163,10 +168,18 @@
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
+import { VueSlideToggle } from 'vue-slide-toggle'
+
 export default {
   name: 'Profile',
   components: {
     UserNav,
+    SlideToggle: VueSlideToggle,
+  },
+  data() {
+    return {
+      openOrder: false,
+    }
   },
   head: {
     title: 'FiXmoke - Личный кабинет',

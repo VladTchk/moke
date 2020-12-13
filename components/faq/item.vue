@@ -16,13 +16,16 @@
     >
       <div v-show="isOpen" class="faq__wrapper">
         <ul class="faq__list">
-          <li v-for="(question, y) in section.questions" :key="question.title">
+          <li
+            v-for="(question, y) in section.questions"
+            :key="question.question"
+          >
             <nuxt-link
               :to="`/faq/${index}_${y}`"
               class="faq__link"
               active-class="active"
             >
-              {{ question.title }}
+              {{ question.question | strippedContent }}
             </nuxt-link>
           </li>
         </ul>
@@ -36,13 +39,16 @@ import { TweenMax, Power4 } from 'gsap'
 
 export default {
   name: 'Item',
+  filters: {
+    strippedContent: (str) => str.replace(/<\/?[^>]+>/gi, ' '),
+  },
   props: {
     section: {
       type: Object,
       default() {
         return {
-          title: '',
-          text: '',
+          question: '',
+          answer: '',
         }
       },
     },

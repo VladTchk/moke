@@ -24,6 +24,7 @@
       <!-- Page Content -->
       <Nuxt />
       <!-- / Page Content  -->
+      <Auth />
     </div>
   </Fragment>
 </template>
@@ -34,10 +35,12 @@ import Header from '@/components/layouts/Header'
 import Nav from '@/components/layouts/Nav'
 import Background from '@/components/layouts/Background'
 import { Fragment } from 'vue-fragment'
+import Auth from '@/components/layouts/Auth'
 
 export default {
   name: 'Layout',
   components: {
+    Auth,
     Sprite,
     Header,
     Nav,

@@ -2,9 +2,9 @@
   <div class="catalog__goods">
     <div class="catalog__name">
       <span>{{ item.name }}</span>
-      <span
-        ><small>{{ item.taste.basic }}</small></span
-      >
+      <!--      <span>-->
+      <!--        <small>{{ item.taste.basic }}</small>-->
+      <!--      </span>-->
     </div>
     <div class="catalog__select">
       <label
@@ -110,10 +110,23 @@ export default {
     addCount() {
       this.counts[this.currentSize][this.currentSet] += 1
       this.counts = [...this.counts]
+      this.$store.commit('cart/SET_CART', {
+        item: this.item,
+        counts: this.counts,
+      })
     },
     removeCount() {
       this.counts[this.currentSize][this.currentSet] -= 1
       this.counts = [...this.counts]
+      const goodsLength = this.counts.flat().filter((item) => item > 0)
+      if (goodsLength.length > 0) {
+        this.$store.commit('cart/SET_CART', {
+          item: this.item,
+          counts: this.counts,
+        })
+      } else {
+        this.$store.commit('cart/DECREMENT_CART', this.item.id)
+      }
     },
   },
 }

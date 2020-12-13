@@ -54,85 +54,14 @@
           <!--          </div>-->
         </div>
         <div class="catalog__filter" :class="{ active: isOpenFilters }">
-          <label class="catalog__label">
-            <Multiselect
-              v-model="selectedVal"
-              :options="options"
-              :multiple="true"
-              :searchable="false"
-              placeholder="Базовый вкус"
-              :close-on-select="false"
-              :clear-on-select="false"
-              :preserve-search="true"
-              @input="setSelected"
-            >
-              <template
-                slot="selection"
-                slot-scope="{ values, search, isOpen }"
-              >
-                <span
-                  v-if="values.length && !isOpen"
-                  class="multiselect__single"
-                >
-                  Базовый вкус ({{ values.length }})
-                </span>
-                <span v-if="isOpen">Базовый вкус</span>
-              </template>
-            </Multiselect>
-          </label>
-          <!--          <label class="catalog__label">-->
-          <!--            <select-->
-          <!--              class="catalog__label_item select2-multiple"-->
-          <!--              data-placeholder="Базовый вкус"-->
-          <!--              name=""-->
-          <!--              multiple-->
-          <!--            >-->
-          <!--              <option value="1">Базовый вкус 1</option>-->
-          <!--              <option value="2">Базовый вкус 2</option>-->
-          <!--              <option value="3">Базовый вкус 3</option>-->
-          <!--            </select>-->
-          <!--          </label>-->
-
-          <!--          <label class="catalog__label">-->
-          <!--            <v-select :options="options"></v-select>-->
-          <!--          </label>-->
-
-          <!--          <label class="catalog__label">-->
-          <!--            <select-->
-          <!--              class="catalog__label_item select2-multiple"-->
-          <!--              data-placeholder="Оттенок вкуса"-->
-          <!--              name="name_2"-->
-          <!--              multiple-->
-          <!--            >-->
-          <!--              <option value="1">Оттенок вкуса 1</option>-->
-          <!--              <option value="2">Оттенок вкуса 2</option>-->
-          <!--              <option value="3">Оттенок вкуса 3</option>-->
-          <!--            </select>-->
-          <!--          </label>-->
-          <!--          <label class="catalog__label">-->
-          <!--            <select-->
-          <!--              class="catalog__label_item select2-multiple"-->
-          <!--              data-placeholder="Ноты вкуса"-->
-          <!--              name="name_2"-->
-          <!--              multiple-->
-          <!--            >-->
-          <!--              <option value="1">Ноты вкуса</option>-->
-          <!--              <option value="2">Ноты вкуса</option>-->
-          <!--              <option value="3">Ноты вкуса</option>-->
-          <!--            </select>-->
-          <!--          </label>-->
-          <!--          <label class="catalog__label">-->
-          <!--            <select-->
-          <!--              class="catalog__label_item select2-multiple"-->
-          <!--              data-placeholder="Тип вкуса"-->
-          <!--              name="name_2"-->
-          <!--              multiple-->
-          <!--            >-->
-          <!--              <option value="1">Тип вкуса</option>-->
-          <!--              <option value="2">Тип вкуса</option>-->
-          <!--              <option value="3">Тип вкуса</option>-->
-          <!--            </select>-->
-          <!--          </label>-->
+          <SelectGoods
+            v-for="item in goodsFilters"
+            :key="item.title"
+            :type="item.type"
+            :title="item.title"
+            :name="item.name"
+            :list="item.list"
+          />
         </div>
       </div>
 
@@ -165,8 +94,54 @@
       </ul>
 
       <div class="catalog__middle">
-        <h3>Select filter: {{ selectedVal }}</h3>
-        <br />
+        <template v-if="cartCount === -1">
+          <small>{{ cartList }}</small>
+          <br />
+        </template>
+        <div class="catalog__sorting">
+          <div class="catalog__sorting_title">Сортировать по:</div>
+          <button
+            class="catalog__sorting_btn"
+            :class="{ active: sortType === 'popular' }"
+            type="button"
+            @click="sortType = 'popular'"
+          >
+            популярности
+          </button>
+          <button
+            class="catalog__sorting_btn"
+            :class="{ active: sortType === 'price' }"
+            type="button"
+            @click="sortType = 'price'"
+          >
+            цене
+          </button>
+          <button
+            class="catalog__sorting_btn"
+            :class="{ active: sortType === 'new' }"
+            type="button"
+            @click="sortType = 'new'"
+          >
+            новинкам
+          </button>
+          <button
+            class="catalog__sorting_btn"
+            :class="{ active: sortType === 'abc' }"
+            type="button"
+            @click="sortType = 'abc'"
+          >
+            алфавиту
+          </button>
+
+          <button class="catalog__sorting_filter" type="button">
+            <svg class="icon">
+              <use xlink:href="#sort" />
+            </svg>
+          </button>
+        </div>
+
+        <!--        <h3>Select filter: {{ selectedVal }}</h3>-->
+        <!--        <br />-->
         <!--        <div-->
         <!--          v-for="item in alphabet"-->
         <!--          :key="item"-->
@@ -174,7 +149,6 @@
         <!--        >-->
         <!--          <h5>{{ item }}</h5>-->
         <!--        </div>-->
-
         <div class="catalog__list">
           <div class="catalog__item">
             <!--              <div-->
@@ -186,7 +160,7 @@
             <!--                {{ letterTitle(item.name[0]) }}-->
             <!--              </div>-->
             <ItemGoods
-              v-for="item in goodsFilter(list)"
+              v-for="item in goodsFilter(goodsList)"
               :key="item.name"
               :item="item"
             />
@@ -203,28 +177,35 @@
 import UserNav from '@/components/layouts/UserNav'
 import ItemGoods from '@/components/goods/item'
 import Tobacco from '@/components/goods/tobacco'
-import Multiselect from 'vue-multiselect'
+import SelectGoods from '@/components/goods/select'
 
 export default {
   name: 'Goods',
-  components: { ItemGoods, UserNav, Tobacco, Multiselect },
+  components: { ItemGoods, UserNav, Tobacco, SelectGoods },
   async fetch({ store }) {
-    if (store.getters['goods/goods'].length === 0) {
-      await store.dispatch('goods/fetch')
+    if (store.getters['goods/GOODS_LIST'].length === 0) {
+      await store.dispatch('goods/FETCH')
     }
   },
   data() {
     return {
       lastLetter: {}, // abcdefghijklmnopqrstuvwxyz
-      options: ['first', 'second', 'third'],
-      selectedVal: [],
-      basic: ['first', 'second', 'third'],
-      isOpenFilters: false,
+      isOpenFilters: true,
+      sortType: 'new',
     }
   },
   computed: {
-    list() {
-      return this.$store.getters['goods/goods']
+    goodsList() {
+      return this.$store.getters['goods/GOODS_LIST']
+    },
+    goodsFilters() {
+      return this.$store.getters['goods/GOODS_FILTERS']
+    },
+    cartList() {
+      return this.$store.getters['cart/CART_LIST']
+    },
+    cartCount() {
+      return this.$store.getters['cart/CART_COUNT']
     },
     alphabet() {
       return 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -234,29 +215,27 @@ export default {
     letterTitle(letter) {
       return letter.toUpperCase() + '' + letter.toLowerCase()
     },
-    check(letter) {
-      const check = this.lastLetter[letter.toLowerCase()] === undefined
-      this.lastLetter[letter.toLowerCase()] = 0
-      return check
-    },
-    setSelected(value) {
-      // eslint-disable-next-line no-console
-      console.log('setSelected', value)
-      this.selectedVal = value
-    },
+    // check(letter) {
+    //   const check = this.lastLetter[letter.toLowerCase()] === undefined
+    //   this.lastLetter[letter.toLowerCase()] = 0
+    //   return check
+    // },
     goodsFilter(list) {
       // eslint-disable-next-line no-console
       // console.log('selectedVal: ' + this.selectedVal)
-      const filtered = list.filter((item) => {
-        const is = this.selectedVal.every((word) => {
-          return item.taste.basic.includes(word)
-        })
-        return is
-      })
+
+      // const filtered = list.filter((item) => {
+      //   const is = this.selectedVal.every((word) => {
+      //     return item.taste.basic.includes(word)
+      //   })
+      //   return is
+      // })
+
       // eslint-disable-next-line no-console
       // console.log(filtered)
 
-      return filtered
+      // return filtered
+      return list
     },
   },
   head: {

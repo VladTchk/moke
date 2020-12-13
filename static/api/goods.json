@@ -1,27 +1,85 @@
 {
-  "count": 2,
+  "type": "tobacco",
+  "count": 16,
+  "filters": [
+    {
+      "type": "select",
+      "title": "Базовий вкус",
+      "name": "basic",
+      "list": [
+        "first",
+        "second",
+        "third",
+        "fourth",
+        "fifth",
+        "sixth"
+      ]
+    },
+    {
+      "type": "select",
+      "title": "Оттенок вкуса",
+      "name": "shades",
+      "list": [
+        "first",
+        "second",
+        "third",
+        "fourth",
+        "fifth",
+        "sixth"
+      ]
+    },
+    {
+      "type": "select",
+      "title": "Ноты вкуса",
+      "name": "notes",
+      "list": [
+        "first",
+        "second",
+        "third",
+        "fourth",
+        "fifth",
+        "sixth"
+      ]
+    },
+    {
+      "type": "select",
+      "title": "Тип вкуса",
+      "name": "type",
+      "list": [
+        "first",
+        "second",
+        "third",
+        "fourth",
+        "fifth",
+        "sixth"
+      ]
+    }
+  ],
   "list": [
     {
-      "id": 1,
-      "name": "DARKSIDE Bananapapa",
-      "maker": "DARKSIDE",
-      "desc": "DARKSIDE Bananapapa - это яркий вкус",
+      "id": "5f9365084c566f5670adc01d",
+      "name": "Verton",
+      "maker": "SOFTMICRO",
+      "desc": "Occaecat velit consequat occaecat eiusmod ullamco ad proident esse nulla commodo elit pariatur occaecat. Officia excepteur aliquip laborum fugiat. Nulla qui proident Lorem tempor nulla sunt duis labore do ad. Enim mollit proident nisi amet do reprehenderit elit cupidatat duis voluptate ut eu proident. Ea culpa esse proident proident amet ea proident. Incididunt laborum est duis sit proident deserunt excepteur consequat aute. Ipsum fugiat veniam sunt commodo adipisicing eiusmod exercitation tempor commodo minim officia commodo sint.",
       "variations": [
         {
           "id": 1,
           "size": 50,
           "set": [
             {
-              "price": 100,
-              "name": "Base"
-            },
-            {
-              "price": 200,
-              "name": "Core"
-            },
-            {
               "price": 300,
-              "name": "Rare"
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
@@ -30,63 +88,68 @@
           "size": 100,
           "set": [
             {
-              "price": 400,
-              "name": "Base"
+              "price": 100,
+              "name": "Base",
+              "available": true
             },
             {
               "price": 500,
-              "name": "Core"
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 600,
-              "name": "Rare"
+              "price": 700,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
         {
           "id": 3,
-          "size": 250,
+          "size": 150,
           "set": [
             {
-              "price": 700,
-              "name": "Base"
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
             },
             {
               "price": 800,
-              "name": "Core"
-            },
-            {
-              "price": 900,
-              "name": "Rare"
+              "name": "Rare",
+              "available": true
             }
           ]
         }
       ],
-      "available": true,
       "taste": {
         "basic": [
-          "first",
-          "third"
+          "second",
+          "fourth"
         ],
         "shades": [
-          "first",
-          "third"
+          "third",
+          "fourth"
         ],
         "notes": [
-          "first",
-          "third"
+          "second",
+          "sixth"
         ],
         "type": [
-          "first",
-          "third"
+          "third",
+          "fifth"
         ]
       }
     },
     {
-      "id": 2,
-      "name": "ARKSIDE Bananapapa",
-      "maker": "ARKSIDE",
-      "desc": "ARKSIDE Bananapapa - это яркий вкус",
+      "id": "5f93650831055a714c8a8f60",
+      "name": "Ramjob",
+      "maker": "GEEKFARM",
+      "desc": "Sunt Lorem nostrud in eu occaecat pariatur nostrud culpa pariatur non dolore anim irure proident. In eiusmod ad sit dolor aliqua commodo excepteur. Elit dolore non deserunt proident. Minim magna consectetur in nostrud ipsum dolore incididunt ipsum.",
       "variations": [
         {
           "id": 1,
@@ -94,15 +157,18 @@
           "set": [
             {
               "price": 100,
-              "name": "Base"
+              "name": "Base",
+              "available": true
             },
             {
-              "price": 200,
-              "name": "Core"
+              "price": 500,
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 300,
-              "name": "Rare"
+              "price": 800,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
@@ -111,63 +177,68 @@
           "size": 100,
           "set": [
             {
-              "price": 400,
-              "name": "Base"
-            },
-            {
-              "price": 500,
-              "name": "Core"
+              "price": 300,
+              "name": "Base",
+              "available": true
             },
             {
               "price": 600,
-              "name": "Rare"
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
         {
           "id": 3,
-          "size": 250,
+          "size": 150,
           "set": [
             {
-              "price": 700,
-              "name": "Base"
+              "price": 100,
+              "name": "Base",
+              "available": true
             },
             {
-              "price": 800,
-              "name": "Core"
+              "price": 500,
+              "name": "Core",
+              "available": true
             },
             {
               "price": 900,
-              "name": "Rare"
+              "name": "Rare",
+              "available": true
             }
           ]
         }
       ],
-      "available": true,
       "taste": {
         "basic": [
-          "first",
-          "second"
+          "second",
+          "sixth"
         ],
         "shades": [
-          "first",
-          "second"
+          "second",
+          "fifth"
         ],
         "notes": [
           "first",
-          "second"
+          "fourth"
         ],
         "type": [
           "first",
-          "second"
+          "fourth"
         ]
       }
     },
     {
-      "id": 3,
-      "name": "KARKSIDE Bananapapa",
-      "maker": "KARKSIDE",
-      "desc": "KARKSIDE Bananapapa - это яркий вкус",
+      "id": "5f936508ae8dbeb0d59c5f9e",
+      "name": "Uniworld",
+      "maker": "KONGLE",
+      "desc": "Aliquip in eu cupidatat amet nisi dolore cupidatat laboris. Aliquip minim nostrud qui quis dolor veniam enim nostrud. Elit excepteur esse proident do. Cillum aliquip ad amet eiusmod do. Cillum mollit occaecat veniam Lorem enim anim minim occaecat sunt.",
       "variations": [
         {
           "id": 1,
@@ -175,15 +246,18 @@
           "set": [
             {
               "price": 100,
-              "name": "Base"
+              "name": "Base",
+              "available": true
             },
             {
-              "price": 200,
-              "name": "Core"
+              "price": 500,
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 300,
-              "name": "Rare"
+              "price": 700,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
@@ -192,79 +266,87 @@
           "size": 100,
           "set": [
             {
-              "price": 400,
-              "name": "Base"
+              "price": 300,
+              "name": "Base",
+              "available": true
             },
             {
               "price": 500,
-              "name": "Core"
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 600,
-              "name": "Rare"
+              "price": 900,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
         {
           "id": 3,
-          "size": 250,
+          "size": 150,
           "set": [
             {
-              "price": 700,
-              "name": "Base"
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
             },
             {
               "price": 800,
-              "name": "Core"
-            },
-            {
-              "price": 900,
-              "name": "Rare"
+              "name": "Rare",
+              "available": true
             }
           ]
         }
       ],
-      "available": true,
       "taste": {
         "basic": [
           "third",
-          "second"
+          "fourth"
         ],
         "shades": [
-          "first",
-          "second"
+          "second",
+          "sixth"
         ],
         "notes": [
-          "first",
-          "second"
+          "third",
+          "fourth"
         ],
         "type": [
-          "first",
-          "second"
+          "third",
+          "fourth"
         ]
       }
     },
     {
-      "id": 4,
-      "name": "CARKSIDE Bananapapa",
-      "maker": "CARKSIDE",
-      "desc": "CARKSIDE Bananapapa - это яркий вкус",
+      "id": "5f9365088b1c80b096510d7c",
+      "name": "Beadzza",
+      "maker": "MINGA",
+      "desc": "Do velit ipsum exercitation officia ea voluptate eiusmod laborum elit. Minim quis magna consequat velit commodo. Dolore irure irure laboris consectetur eu occaecat do ut culpa aliqua deserunt. Culpa adipisicing sint aliquip enim officia reprehenderit ut dolor mollit ullamco. In labore ut sit cillum est cupidatat non.",
       "variations": [
         {
           "id": 1,
           "size": 50,
           "set": [
             {
-              "price": 100,
-              "name": "Base"
-            },
-            {
-              "price": 200,
-              "name": "Core"
-            },
-            {
               "price": 300,
-              "name": "Rare"
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
@@ -273,64 +355,68 @@
           "size": 100,
           "set": [
             {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
               "price": 400,
-              "name": "Base"
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 500,
-              "name": "Core"
-            },
-            {
-              "price": 600,
-              "name": "Rare"
+              "price": 900,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
         {
           "id": 3,
-          "size": 250,
+          "size": 150,
           "set": [
             {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
               "price": 700,
-              "name": "Base"
-            },
-            {
-              "price": 800,
-              "name": "Core"
-            },
-            {
-              "price": 900,
-              "name": "Rare"
+              "name": "Rare",
+              "available": true
             }
           ]
         }
       ],
-      "available": true,
-      "taste":
-      {
+      "taste": {
         "basic": [
-          "first",
-          "second"
+          "second",
+          "fifth"
         ],
         "shades": [
-          "first",
-          "second"
+          "second",
+          "sixth"
         ],
         "notes": [
           "first",
-          "second"
+          "sixth"
         ],
         "type": [
           "first",
-          "second"
+          "sixth"
         ]
       }
     },
     {
-      "id": 5,
-      "name": "DCARKSIDE Bananapapa",
-      "maker": "DCARKSIDE",
-      "desc": "DCARKSIDE Bananapapa - это яркий вкус",
+      "id": "5f9365084c9e846c3d816ca9",
+      "name": "Zillidium",
+      "maker": "HAWKSTER",
+      "desc": "Ullamco commodo laborum ut deserunt id. Culpa qui reprehenderit cupidatat cupidatat. Nulla ad aute est eu exercitation nulla proident. Cillum esse sunt aute enim incididunt eiusmod nostrud eiusmod id quis.",
       "variations": [
         {
           "id": 1,
@@ -338,15 +424,18 @@
           "set": [
             {
               "price": 100,
-              "name": "Base"
+              "name": "Base",
+              "available": true
             },
             {
-              "price": 200,
-              "name": "Core"
+              "price": 400,
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 300,
-              "name": "Rare"
+              "price": 700,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
@@ -355,56 +444,1039 @@
           "size": 100,
           "set": [
             {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
               "price": 400,
-              "name": "Base"
+              "name": "Core",
+              "available": true
             },
             {
-              "price": 500,
-              "name": "Core"
-            },
-            {
-              "price": 600,
-              "name": "Rare"
+              "price": 700,
+              "name": "Rare",
+              "available": true
             }
           ]
         },
         {
           "id": 3,
-          "size": 250,
+          "size": 150,
           "set": [
             {
-              "price": 700,
-              "name": "Base"
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
             },
             {
               "price": 800,
-              "name": "Core"
-            },
-            {
-              "price": 900,
-              "name": "Rare"
+              "name": "Rare",
+              "available": true
             }
           ]
         }
       ],
-      "available": true,
-      "taste":
-      {
+      "taste": {
         "basic": [
-          "first",
-          "second"
+          "second",
+          "fifth"
         ],
         "shades": [
           "first",
-          "second"
+          "fifth"
         ],
         "notes": [
+          "second",
+          "fourth"
+        ],
+        "type": [
+          "third",
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508f2835961612c4654",
+      "name": "Senmao",
+      "maker": "COMTRAK",
+      "desc": "Cupidatat sit ad voluptate ullamco ullamco reprehenderit deserunt occaecat eiusmod. Tempor proident consectetur et adipisicing ea officia reprehenderit nisi occaecat duis. Nisi deserunt ea nostrud amet sunt duis. Ut magna reprehenderit ex officia magna duis consectetur minim. Aliqua deserunt consectetur velit officia excepteur fugiat ullamco esse elit tempor veniam occaecat. Culpa laborum consequat incididunt voluptate ut exercitation ex eiusmod deserunt ea sint minim mollit.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "second",
+          "fifth"
+        ],
+        "shades": [
           "first",
-          "second"
+          "fifth"
+        ],
+        "notes": [
+          "third",
+          "fourth"
+        ],
+        "type": [
+          "second",
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508e036e0108f7feae4",
+      "name": "Flum",
+      "maker": "ACRUEX",
+      "desc": "Fugiat ullamco ea velit nulla id fugiat. Sint deserunt occaecat cillum velit adipisicing anim amet ex tempor aliqua commodo labore veniam mollit. Elit nostrud incididunt excepteur ad irure velit in ullamco nisi deserunt culpa sunt.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "sixth"
+        ],
+        "shades": [
+          "second",
+          "fourth"
+        ],
+        "notes": [
+          "third",
+          "fifth"
         ],
         "type": [
           "first",
-          "second"
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f9365085cadbe5f1468c2ad",
+      "name": "Flumbo",
+      "maker": "SNOWPOKE",
+      "desc": "Tempor ea irure aliquip duis et cupidatat. Enim esse ullamco cillum anim cillum labore ipsum cillum tempor anim sint anim. Ea labore et consectetur proident proident sunt velit consectetur ex laborum ad. Nisi elit irure cillum et consectetur occaecat est culpa ea magna non.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "fourth"
+        ],
+        "shades": [
+          "third",
+          "sixth"
+        ],
+        "notes": [
+          "third",
+          "fifth"
+        ],
+        "type": [
+          "first",
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f9365087c5e984bddbb8acf",
+      "name": "Isologica",
+      "maker": "ZORROMOP",
+      "desc": "Reprehenderit magna consectetur dolore incididunt eiusmod. In voluptate quis duis sint voluptate. Ad culpa fugiat voluptate Lorem in tempor.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "sixth"
+        ],
+        "shades": [
+          "first",
+          "fifth"
+        ],
+        "notes": [
+          "second",
+          "fifth"
+        ],
+        "type": [
+          "third",
+          "sixth"
+        ]
+      }
+    },
+    {
+      "id": "5f9365083d235cd99065f6ec",
+      "name": "Nikuda",
+      "maker": "REMOTION",
+      "desc": "Labore ad laborum adipisicing dolore fugiat enim occaecat elit dolore cillum fugiat veniam. Occaecat culpa non commodo eu aute occaecat esse dolore id. Sunt ea nostrud dolor aliquip ipsum eiusmod et qui sint. Esse et reprehenderit non irure fugiat elit incididunt pariatur anim excepteur.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "third",
+          "fifth"
+        ],
+        "shades": [
+          "third",
+          "fifth"
+        ],
+        "notes": [
+          "first",
+          "fourth"
+        ],
+        "type": [
+          "second",
+          "sixth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508449f0d1578862cf7",
+      "name": "Ozean",
+      "maker": "ENORMO",
+      "desc": "Magna sint aute et est deserunt sit labore eiusmod ea irure laborum est ipsum minim. Laboris ex tempor ut magna ut velit eiusmod. Veniam enim nulla exercitation nostrud sunt qui laboris nostrud pariatur est laborum laborum irure enim. Voluptate dolor sit deserunt laboris aliquip elit nisi est laboris pariatur officia proident. Ea eu duis mollit adipisicing enim incididunt veniam proident anim laborum. Proident deserunt magna dolor amet irure. Ex officia amet proident fugiat ea pariatur voluptate exercitation duis.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "fourth"
+        ],
+        "shades": [
+          "second",
+          "fifth"
+        ],
+        "notes": [
+          "third",
+          "fifth"
+        ],
+        "type": [
+          "third",
+          "fourth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508ca55331b28d1b211",
+      "name": "Xplor",
+      "maker": "ACLIMA",
+      "desc": "Proident exercitation do irure ut aliquip aute commodo aute incididunt laboris excepteur anim. Aliqua pariatur sint ullamco proident elit voluptate. Consequat est laboris occaecat est ut amet nostrud aliqua. Cillum pariatur consectetur minim culpa elit aute ad Lorem in commodo occaecat exercitation est. Eu fugiat ad et ad eu aute. Aliqua consectetur elit exercitation proident mollit veniam ullamco dolor ex incididunt labore officia. Duis laboris dolore nisi sint cillum non fugiat voluptate excepteur laborum labore.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "fifth"
+        ],
+        "shades": [
+          "second",
+          "fifth"
+        ],
+        "notes": [
+          "first",
+          "sixth"
+        ],
+        "type": [
+          "first",
+          "fourth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508ebccf2a05eb80982",
+      "name": "Geofarm",
+      "maker": "CONJURICA",
+      "desc": "In sint nostrud nisi est ullamco officia consequat nulla. Incididunt Lorem aliqua fugiat officia aliquip mollit laboris. Magna reprehenderit magna aliquip reprehenderit occaecat pariatur amet sunt est est aute commodo veniam. Ea ea eiusmod laborum exercitation. Esse enim proident mollit ullamco elit mollit amet excepteur sunt quis incididunt. Aliqua exercitation ipsum tempor qui exercitation reprehenderit Lorem Lorem quis proident.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "second",
+          "fourth"
+        ],
+        "shades": [
+          "first",
+          "fourth"
+        ],
+        "notes": [
+          "second",
+          "fourth"
+        ],
+        "type": [
+          "first",
+          "sixth"
+        ]
+      }
+    },
+    {
+      "id": "5f93650895403fb180a5a6ee",
+      "name": "Bugsall",
+      "maker": "EXOBLUE",
+      "desc": "Voluptate ea quis laboris sunt pariatur do anim magna laborum voluptate magna elit aliquip quis. Elit et et et laborum in culpa dolore ut consequat culpa tempor proident. Nisi esse occaecat cupidatat labore reprehenderit occaecat adipisicing ea voluptate occaecat laboris. Dolore cupidatat aliqua nulla esse ad id laboris nulla eiusmod dolore eu voluptate. Non duis dolore enim eiusmod anim qui aliqua.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 100,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "third",
+          "sixth"
+        ],
+        "shades": [
+          "third",
+          "fourth"
+        ],
+        "notes": [
+          "second",
+          "fifth"
+        ],
+        "type": [
+          "third",
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508c6d1d6d71d014f9b",
+      "name": "Ultrimax",
+      "maker": "ENTROFLEX",
+      "desc": "Adipisicing esse est nostrud cupidatat adipisicing. Ad irure veniam ex occaecat magna in. Ipsum velit elit do aliquip nulla mollit id consectetur qui. Non deserunt mollit irure nisi officia excepteur eu aute proident ipsum.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 300,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 500,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 900,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "second",
+          "fifth"
+        ],
+        "shades": [
+          "second",
+          "fifth"
+        ],
+        "notes": [
+          "second",
+          "fifth"
+        ],
+        "type": [
+          "third",
+          "fifth"
+        ]
+      }
+    },
+    {
+      "id": "5f936508376f9dcc13035f76",
+      "name": "Comcur",
+      "maker": "ANARCO",
+      "desc": "Pariatur culpa aute fugiat reprehenderit voluptate Lorem culpa culpa et amet ex sunt qui non. Ea proident excepteur pariatur id est nulla adipisicing cupidatat do adipisicing laborum. Dolor aute magna dolore commodo laborum exercitation non adipisicing. Aliquip adipisicing nostrud in esse aliquip do qui.",
+      "variations": [
+        {
+          "id": 1,
+          "size": 50,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 400,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "size": 100,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 800,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "size": 150,
+          "set": [
+            {
+              "price": 200,
+              "name": "Base",
+              "available": true
+            },
+            {
+              "price": 600,
+              "name": "Core",
+              "available": true
+            },
+            {
+              "price": 700,
+              "name": "Rare",
+              "available": true
+            }
+          ]
+        }
+      ],
+      "taste": {
+        "basic": [
+          "first",
+          "fourth"
+        ],
+        "shades": [
+          "second",
+          "sixth"
+        ],
+        "notes": [
+          "second",
+          "sixth"
+        ],
+        "type": [
+          "third",
+          "fourth"
         ]
       }
     }

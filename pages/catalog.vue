@@ -19,16 +19,7 @@
         </li>
       </ul>
 
-      <ul class="list__menu">
-        <li v-for="i in 10" :key="i" class="list__item">
-          <div class="list__letter">A {{ i }}</div>
-          <ul class="list__maker">
-            <li v-for="j in 2" :key="j">
-              <a href="#" class="list__maker_link">Al Fakher {{ j }}</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <Brands />
     </div>
 
     <div class="grid__right">
@@ -69,9 +60,20 @@
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
+import Brands from '@/components/catalog/brands'
 export default {
   name: 'Catalog',
-  components: { UserNav },
+  components: { Brands, UserNav },
+  // async fetch({ store }) {
+  //   if (store.getters['catalog/BRANDS_LIST'].length === 0) {
+  //     await store.dispatch('catalog/FETCH')
+  //   }
+  // },
+  // computed: {
+  //   brandsList() {
+  //     return this.$store.getters['catalog/BRANDS_LIST']
+  //   },
+  // },
   head: {
     title: 'FiXmoke - Каталог',
   },

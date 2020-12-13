@@ -1,17 +1,22 @@
 export const state = () => ({
   goods: [],
+  filters: [],
 })
 
 export const mutations = {
-  setGoods(state, goods) {
+  SET_GOODS(state, goods) {
     state.goods = goods
+  },
+  SET_FILTERS(state, filters) {
+    state.filters = filters
   },
 }
 
 export const actions = {
-  async fetch({ commit }) {
-    const { list } = await this.$axios.$get(
-      `${process.env.VUE_APP_API}/goods.json`
+  async FETCH({ commit }) {
+    // eslint-disable-next-line no-unused-vars
+    const { list, filters, count, type } = await this.$axios.$get(
+      `${process.env.baseUrl}/goods.json`
     )
     const sorted = [...list].sort((a, b) => {
       const first = a.name.charAt(0).toLowerCase()
@@ -24,10 +29,14 @@ export const actions = {
       }
       return 0
     })
-    commit('setGoods', sorted)
+    // eslint-disable-next-line no-console
+    console.log(filters)
+    commit('SET_GOODS', sorted)
+    commit('SET_FILTERS', filters)
   },
 }
 
 export const getters = {
-  goods: (s) => s.goods,
+  GOODS_LIST: (s) => s.goods,
+  GOODS_FILTERS: (s) => s.filters,
 }

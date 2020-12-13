@@ -11,7 +11,9 @@
     <div class="tobacco__bottom">
       <a href="#" class="tobacco__btn">ЛУЧШИЕ СОЧЕТАНИЯ</a>
       <a href="#" class="tobacco__btn">МИКСЫ</a>
-      <a href="#" class="tobacco__btn tobacco__btn-dark">В КОРЗИНУ</a>
+      <nuxt-link to="/order" class="tobacco__btn tobacco__btn-dark">
+        В КОРЗИНУ
+      </nuxt-link>
     </div>
 
     <!--    <div class="tobacco__goods catalog__goods">-->

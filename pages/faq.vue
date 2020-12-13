@@ -13,7 +13,7 @@
       </ul>
     </div>
 
-    <NuxtChild :key="$route.params.id" :sections="sections" />
+    <NuxtChild :key="$route.params.id" />
   </div>
 </template>
 
@@ -22,7 +22,11 @@ import Item from '@/components/faq/item'
 // import axios from 'axios
 
 export default {
+  loading: false,
   name: 'Faq',
+  // transition: {
+  //   name: 'fade',
+  // },
   components: { Item },
   // async asyncData({ error }) {
   //   try {
@@ -34,21 +38,19 @@ export default {
   // },
 
   async fetch({ store }) {
-    if (store.getters['faq/faqs'].length === 0) {
-      await store.dispatch('faq/fetch')
+    if (store.getters['faq/FAGS_LIST'].length === 0) {
+      await store.dispatch('faq/FETCH')
     }
     // try {
     //   const { data } = await axios.get('http://fixmoke.ru/api/faq/', {})
-    // eslint-disable-next-line no-console
     // console.dir(data)
     // } catch (e) {
-    // eslint-disable-next-line no-console
     // console.log(e)
     // }
   },
   computed: {
     sections() {
-      return this.$store.getters['faq/faqs']
+      return this.$store.getters['faq/FAGS_LIST']
     },
   },
   head: {
