@@ -1,5 +1,38 @@
 import axios from 'axios'
 
-export default axios.create({
+const instance = axios.create({
   baseURL: process.env.baseUrl,
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+  },
 })
+
+instance.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem(
+      'access_token'
+    )}`
+    return config
+  },
+  (error) => {
+    Promise.reject(error)
+  }
+)
+
+instance.interceptors.response.use(
+  // (res) => res,
+  (res) => res,
+  (err) => {
+    // eslint-disable-next-line no-console
+    console.error(err)
+    const error = err.response
+    if (error.status === 401) {
+      // eslint-disable-next-line no-console
+      localStorage.removeItem('access_token')
+      location.reload()
+    }
+  }
+)
+
+export default instance

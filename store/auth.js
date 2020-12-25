@@ -1,22 +1,52 @@
+import axios from '@/plugins/axios'
+
 export const state = () => ({
-  auth: [],
+  isOpenForm: false,
+  token: localStorage.getItem('access_token') || null,
+  expires: 0,
 })
 
 export const mutations = {
-  setFaqs(state, faqs) {
-    state.auth = faqs
+  SET_AUTH(state, data) {
+    state.token = data.token
+    state.expires = data.expires_in
+  },
+  SET_FORM_STATE(state, data) {
+    state.isOpenForm = data
   },
 }
 
 export const actions = {
-  async fetch({ commit }) {
-    const { sections } = await this.$axios.$get(
-      `${process.env.VUE_APP_API}/faq.json`
-    )
-    commit('setFaqs', sections)
+  TOGGLE_FORM({ commit }, data) {
+    commit('SET_FORM_STATE', data)
+  },
+  AUTH({ commit }, form) {
+    axios
+      .post('/auth/login', form)
+      .then((res) => {
+        localStorage.setItem('access_token', res.data.token)
+        commit('SET_AUTH', res.data)
+        commit('SET_FORM_STATE', false)
+        // eslint-disable-next-line no-console
+        console.log('login')
+      })
+      .catch((error) => {
+        // this.showLoginError({ title: 'AUTH', message: error.message })
+        // eslint-disable-next-line no-console
+        console.log(error)
+      })
+
+    // try {
+    //   const { data } = await axios.get('/auth/login')
+    //   commit('SET_AUTH', data)
+    // } catch (e) {
+    // eslint-disable-next-line no-console
+    // console.log(e)
   },
 }
 
 export const getters = {
-  auth: (s) => s.auth,
+  GET_TOKEN: (s) => s.token,
+  IS_OPEN_FORM: (s) => s.isOpenForm,
+  IS_LOGGED_IN: (s) => s.token !== null,
 }

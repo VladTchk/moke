@@ -3,23 +3,34 @@
     <div class="grid__left grid__left-fix">
       <ul class="grid__nav">
         <li class="grid__nav_item">
-          <a href="#" class="grid__nav_link active">Каталог</a>
+          <nuxt-link
+            :to="`/catalog`"
+            class="grid__nav_link"
+            active-class="---active"
+            :class="{ active: $route.path === `/catalog` }"
+            exact
+          >
+            Каталог
+          </nuxt-link>
         </li>
-        <li class="grid__nav_item">
-          <a href="#" class="grid__nav_link">Табак</a>
-        </li>
-        <li class="grid__nav_item">
-          <a href="#" class="grid__nav_link">Кальяны</a>
-        </li>
-        <li class="grid__nav_item">
-          <a href="#" class="grid__nav_link">Аксессуары</a>
-        </li>
-        <li class="grid__nav_item">
-          <a href="#" class="grid__nav_link">Уголь</a>
+        <li
+          v-for="item in categoriesList"
+          :key="item.id"
+          class="grid__nav_item"
+        >
+          <nuxt-link
+            :to="`/catalog/${item.id}`"
+            class="grid__nav_link"
+            active-class="---active"
+            :class="{ active: $route.path === `/catalog/${item.id}` }"
+            exact
+          >
+            {{ item.name }}
+          </nuxt-link>
         </li>
       </ul>
 
-      <Brands />
+      <NuxtChild :id="$route.params.id" :key="$route.params.id" />
     </div>
 
     <div class="grid__right">
@@ -27,43 +38,43 @@
         <UserNav />
       </div>
 
-      <ul class="list__goods">
-        <li class="list__goods_item">
-          <div class="list__goods_title">DARKSIDE</div>
-          <div class="list__goods_size">30гр / 100гр / 250гр</div>
-          <div class="list__goods_info">
-            <span>10 товаров</span>
-            <span>7 модификаций</span>
-          </div>
-        </li>
-
-        <li v-for="i in 12" :key="i" class="list__goods_item">
-          <div class="list__goods_title">DARKSIDE {{ i }}</div>
-          <div class="list__goods_size">30гр / 100гр / 250гр</div>
-          <div class="list__goods_info">
-            <span>10 товаров</span>
-            <span>7 модификаций</span>
-          </div>
-        </li>
-        <li class="list__goods_item">
-          <div class="list__goods_title">DARKSIDE АКСЕССУАРЫ</div>
-          <div class="list__goods_size">30гр / 100гр / 250гр</div>
-          <div class="list__goods_info">
-            <span>10 товаров</span>
-            <span>7 модификаций</span>
-          </div>
-        </li>
-      </ul>
+      <Sibling
+        v-if="$route.query.brand"
+        :category="$route.params.id"
+        :brand="$route.query.brand"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
-import Brands from '@/components/catalog/brands'
+import Sibling from '@/components/catalog/sibling'
+
 export default {
   name: 'Catalog',
-  components: { Brands, UserNav },
+  components: { UserNav, Sibling },
+  async fetch() {
+    if (this.$store.getters['categories/CATEGORIES_LIST'].length === 0) {
+      await this.$store.dispatch('categories/FETCH')
+    }
+  },
+  data() {
+    return {
+      currentCategories: 0,
+    }
+  },
+  computed: {
+    categoriesList() {
+      return this.$store.getters['categories/CATEGORIES_LIST']
+    },
+  },
+  methods: {
+    changeCategories(id) {
+      this.currentCategories = id
+    },
+  },
+
   // async fetch({ store }) {
   //   if (store.getters['catalog/BRANDS_LIST'].length === 0) {
   //     await store.dispatch('catalog/FETCH')

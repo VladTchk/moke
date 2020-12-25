@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="auth__title">Регистрация</div>
-      <form class="auth__form" @submit="submitReq">
+      <form class="auth__form" @submit.prevent="submitReq">
         <label class="auth__label">
           <input
             ref="nameInput"
@@ -49,7 +49,7 @@
             placeholder="Пароль"
           />
         </label>
-        <button class="auth__btn btn" :disabled="hasErrors" type="submit">
+        <button class="auth__btn btn" :disabled="!isValid" type="submit">
           Зарегистрироваться
         </button>
         <div class="auth__poly auth__text">
@@ -96,6 +96,7 @@
 <script>
 import { Fragment } from 'vue-fragment'
 import { TheMask } from 'vue-the-mask'
+import axios from '@/plugins/axios'
 
 export default {
   name: 'Registration',
@@ -105,7 +106,7 @@ export default {
   },
   data() {
     return {
-      hasErrors: false,
+      // hasErrors: false,
       numberTel: '',
       name: '',
       email: '',
@@ -113,36 +114,54 @@ export default {
       isDone: false,
     }
   },
+  computed: {
+    isValid() {
+      return (
+        this.name.length >= 2 &&
+        this.email.length >= 8 &&
+        // this.numberTel.length === 10 &&
+        this.password.length >= 8
+      )
+    },
+  },
   methods: {
     closeAuth() {
       this.$root.$emit('closeAuth')
     },
-    submitReq(e) {
-      e.preventDefault()
-      this.hasErrors = false
-      if (
-        this.name.length >= 2 &&
-        this.email.length >= 8 &&
-        this.numberTel.length === 10 &&
-        this.password.length >= 8
-      ) {
-        this.isDone = true
+    submitReq() {
+      // this.hasErrors = false
+      if (this.isValid) {
+        this.sendReq()
       } else {
-        this.hasErrors = true
         if (this.name.length < 2) {
           this.showLoginError({ title: 'Имя', message: 'Слишком короткое' })
         }
         if (this.email.length < 8) {
           this.showLoginError({ title: 'Email', message: 'Слишком короткий' })
         }
-        if (this.numberTel.length !== 10) {
-          this.showLoginError({ title: 'Телефон', message: 'Слишком короткий' })
-        }
         if (this.password.length < 8) {
           this.showLoginError({ title: 'Пароль', message: 'Слишком короткий' })
         }
+        // if (this.numberTel.length !== 10) {
+        //   this.showLoginError({ title: 'Телефон', message: 'Слишком короткий' })
+        // }
       }
       return false
+    },
+    sendReq() {
+      const form = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      }
+      axios
+        .post('/auth/register', form)
+        .then((res) => {
+          this.isDone = true
+        })
+        .catch((error) => {
+          this.showLoginError({ title: 'Форма', message: error.message })
+        })
     },
   },
   notifications: {

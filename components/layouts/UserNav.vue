@@ -5,7 +5,7 @@
     <!--        <use xlink:href="#profile" />-->
     <!--      </svg>-->
     <!--    </nuxt-link>-->
-    <a href="/#" class="action__user" @click.stop="openAuth">
+    <a href="/#" class="action__user" @click.stop.prevent="openAuth">
       <svg class="icon">
         <use xlink:href="#profile" />
       </svg>
@@ -26,11 +26,17 @@ export default {
     cartCount() {
       return this.$store.getters['cart/CART_COUNT']
     },
+    isLoggedUser() {
+      return this.$store.getters['auth/IS_LOGGED_IN']
+    },
   },
   methods: {
-    openAuth(e) {
-      e.preventDefault()
-      this.$root.$emit('openAuth')
+    openAuth() {
+      if (this.isLoggedUser) {
+        this.$router.push({ name: 'profile' })
+      } else {
+        this.$store.dispatch('auth/TOGGLE_FORM', true)
+      }
     },
   },
 }

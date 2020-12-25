@@ -26,7 +26,7 @@ export default {
   name: 'Faq',
   // transition: {
   //   name: 'fade',
-  // },
+  // },x
   components: { Item },
   // async asyncData({ error }) {
   //   try {

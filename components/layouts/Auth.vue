@@ -21,10 +21,20 @@ export default {
   },
   data() {
     return {
-      isOpenAuth: false,
+      // isOpenAuth: false,
       currentAuth: 'login',
       step: 2,
     }
+  },
+  computed: {
+    isOpenAuth: {
+      get() {
+        return this.$store.getters['auth/IS_OPEN_FORM']
+      },
+      set(val) {
+        this.$store.dispatch('auth/TOGGLE_FORM', val)
+      },
+    },
   },
   mounted() {
     this.$root.$on('openAuth', (page) => {

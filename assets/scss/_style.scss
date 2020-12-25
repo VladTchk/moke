@@ -2386,6 +2386,13 @@ body.overflow {
       text-align: left;
       color: #000;
       margin-bottom: .6rem;
+      a{
+        color: #000;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
     }
 
     &_info {

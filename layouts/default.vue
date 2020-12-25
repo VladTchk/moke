@@ -14,6 +14,11 @@
       <nuxt-link to="/order">Оформление заказа</nuxt-link>
       |
       <nuxt-link to="/premium">Premium</nuxt-link>
+      Loggin: {{ isAuth }}
+      <br />
+      <small
+        ><small>{{ token }}</small></small
+      >
     </div>
 
     <Sprite />
@@ -47,6 +52,17 @@ export default {
     Background,
     Fragment,
   },
+  computed: {
+    isAuth() {
+      return this.$store.getters['auth/IS_LOGGED_IN']
+    },
+    token() {
+      return this.$store.getters['auth/GET_TOKEN']
+    },
+    local() {
+      return localStorage.getItem('access_token')
+    },
+  },
 }
 </script>
 
@@ -67,6 +83,7 @@ export default {
   background: rgba(#fff, 0.9);
   padding: 0.3rem;
   z-index: 1000;
+  flex-wrap: wrap;
 
   a {
     margin: 0 0.7rem;

@@ -160,8 +160,8 @@
             <!--                {{ letterTitle(item.name[0]) }}-->
             <!--              </div>-->
             <ItemGoods
-              v-for="item in goodsFilter(goodsList)"
-              :key="item.name"
+              v-for="item in goodsFilter(productsList)"
+              :key="item.id"
               :item="item"
             />
           </div>
@@ -182,11 +182,14 @@ import SelectGoods from '@/components/goods/select'
 export default {
   name: 'Goods',
   components: { ItemGoods, UserNav, Tobacco, SelectGoods },
-  async fetch({ store }) {
-    if (store.getters['goods/GOODS_LIST'].length === 0) {
-      await store.dispatch('goods/FETCH')
-    }
+  async fetch() {
+    await this.$store.dispatch('products/FETCH_LIST')
   },
+  // async fetch({ store }) {
+  //   if (store.getters['goods/GOODS_LIST'].length === 0) {
+  //     await store.dispatch('goods/FETCH')
+  //   }
+  // },
   data() {
     return {
       lastLetter: {}, // abcdefghijklmnopqrstuvwxyz
@@ -195,18 +198,28 @@ export default {
     }
   },
   computed: {
-    goodsList() {
-      return this.$store.getters['goods/GOODS_LIST']
+    productsList() {
+      return this.$store.getters['products/PRODUCTS_LIST']
     },
+    // goodsList() {
+    //   return this.$store.getters['goods/GOODS_LIST']
+    // },
     goodsFilters() {
-      return this.$store.getters['goods/GOODS_FILTERS']
+      return []
+      // return this.$store.getters['goods/GOODS_FILTERS']
     },
+    // cartList() {
+    //   return this.$store.getters['cart/CART_LIST']
+    // },
     cartList() {
-      return this.$store.getters['cart/CART_LIST']
+      return []
     },
     cartCount() {
-      return this.$store.getters['cart/CART_COUNT']
+      return []
     },
+    // cartCount() {
+    //   return this.$store.getters['cart/CART_COUNT']
+    // },
     alphabet() {
       return 'abcdefghijklmnopqrstuvwxyz'.split('')
     },
