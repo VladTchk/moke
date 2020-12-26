@@ -30,7 +30,8 @@ instance.interceptors.response.use(
     if (error.status === 401) {
       // eslint-disable-next-line no-console
       localStorage.removeItem('access_token')
-      location.reload()
+      window.location.href = window.location.origin
+      // location.reload()
     }
   }
 )

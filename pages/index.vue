@@ -2,6 +2,8 @@
   <div class="grid">
     <div class="grid__left">
       <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex _</a>
+      <br />
+      <button type="button" @click.stop="openForm">Войти</button>
       <!--      <br />-->
       <!--      <button type="button" @click="check">check</button>-->
       <!--      <br />-->
@@ -27,6 +29,10 @@ export default {
     // },
   },
   methods: {
+    openForm() {
+      console.log('openForm')
+      this.$store.dispatch('auth/TOGGLE_FORM', true)
+    },
     // check() {
     //   axios
     //     .get('/auth/profile')

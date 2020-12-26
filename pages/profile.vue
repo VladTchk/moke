@@ -6,18 +6,18 @@
       <div class="order__grid">
         <label class="order__label order__row-2">
           <input
+            v-model.lazy="name"
             class="input"
             type="text"
-            name=""
             placeholder="Ваше Имя"
             required
           />
         </label>
         <label class="order__label order__row-2">
           <input
+            v-model.lazy="surname"
             class="input"
             type="text"
-            name=""
             placeholder="Ваша Фамилия"
             required
           />
@@ -26,7 +26,8 @@
           <input
             class="input"
             type="tel"
-            name=""
+            :disabled="true"
+            :value="userInfo.phone"
             placeholder="Номер телефона"
             required
           />
@@ -35,19 +36,14 @@
           <input
             class="input"
             type="email"
-            name=""
+            :disabled="true"
+            :value="userInfo.email"
             placeholder="Почтовый адрес Email"
             required
           />
         </label>
-        <div class="order__address order__row-2">
-          109341, Москва, Нижняя Красносельская, 35с49, 408
-        </div>
-        <div class="order__add order__row-2">
-          <svg class="icon">
-            <use xlink:href="#plus" />
-          </svg>
-        </div>
+
+        <Address />
       </div>
       <div class="order__subtitle">2. Управление подпиской</div>
       <div class="order__grid">
@@ -74,7 +70,13 @@
       </div>
 
       <div class="profile__main">
-        <div class="profile__title">Привет, Иван!</div>
+        <pre>
+          <small>{{ userInfo }}</small>
+        </pre>
+        <pre>
+          <small>{{ info }}</small>
+        </pre>
+        <div class="profile__title">Привет, {{ name }}!</div>
         <div class="profile__subtitle">Аналитика заказов</div>
         <div class="profile__list">
           <div
@@ -168,18 +170,65 @@
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
+import Address from '@/components/profile/address'
 import { VueSlideToggle } from 'vue-slide-toggle'
+import axios from '@/plugins/axios'
 
 export default {
   name: 'Profile',
   components: {
     UserNav,
     SlideToggle: VueSlideToggle,
+    Address,
+  },
+  async fetch() {
+    await this.$store.dispatch('user/FETCH_USER')
   },
   data() {
     return {
       openOrder: false,
+      info: '',
     }
+  },
+  computed: {
+    userInfo() {
+      return this.$store.getters['user/USER']
+    },
+    name: {
+      get() {
+        return this.userInfo.name || ''
+      },
+      set(val) {
+        this.updateInfo({ name: val.trim() })
+      },
+    },
+    surname: {
+      get() {
+        return this.userInfo.surname || ''
+      },
+      set(val) {
+        this.updateInfo({ surname: val.trim() })
+      },
+    },
+  },
+  mounted() {
+    axios
+      .get('/auth/profile')
+      .then((r) => {
+        this.info = r.data
+        console.log('r', r.data)
+      })
+      .catch((e) => console.log(e))
+  },
+  methods: {
+    updateInfo(obj) {
+      const form = {
+        name: this.name,
+        surname: this.surname,
+        ...obj,
+      }
+      this.$store.dispatch('user/UPDATE_USER', form)
+    },
   },
   head: {
     title: 'FiXmoke - Личный кабинет',

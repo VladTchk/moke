@@ -739,9 +739,12 @@ body.overflow {
   }
 
   &__add {
+    cursor: pointer;
+    outline: none;
+    border: 0;
     height: 7rem;
     border-radius: .5rem;
-    background-color: #f7f7f7;
+    background: #f7f7f7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2386,10 +2389,12 @@ body.overflow {
       text-align: left;
       color: #000;
       margin-bottom: .6rem;
-      a{
+
+      a {
         color: #000;
         text-decoration: none;
-        &:hover{
+
+        &:hover {
           text-decoration: underline;
         }
       }
@@ -3018,11 +3023,13 @@ body.overflow {
     cursor: pointer;
 
   }
-  &__poly{
+
+  &__poly {
     color: #a6a6a6;
     position: relative;
     padding-left: 2.4rem;
-    .icon{
+
+    .icon {
       position: absolute;
       left: 0;
       top: 50%;

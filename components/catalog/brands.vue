@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     updateSibling() {
+      // eslint-disable-next-line no-console
       console.log('updateSibling')
 
       this.$store.dispatch('categories/FETCH_SIBLING', {
