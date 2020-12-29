@@ -18,10 +18,8 @@ export const actions = {
       .then((res) => {
         commit('SET_PRODUCTS', [...res.data].splice(0, 3))
       })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
+      // eslint-disable-next-line no-console
+      .catch(console.error)
 
     // eslint-disable-next-line no-unused-vars
     // const { list, filters, count, type } = await this.$axios.$get(

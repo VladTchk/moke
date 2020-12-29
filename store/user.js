@@ -21,27 +21,19 @@ export const actions = {
     axios
       .get('/user')
       .then((res) => {
-        // eslint-disable-next-line no-console
-        console.log(res)
         commit('SET_USER', res.data)
       })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
+      // eslint-disable-next-line no-console
+      .catch(console.error)
   },
   UPDATE_USER({ commit }, form) {
     axios
       .post('/user', form)
       .then((res) => {
-        // eslint-disable-next-line no-console
-        console.log('user_p', res.data)
         commit('UPDATE_USER', res.data)
       })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
+      // eslint-disable-next-line no-console
+      .catch(console.error)
   },
 }
 

@@ -70,15 +70,21 @@
       </div>
 
       <div class="profile__main">
-        <pre>
-          <small>{{ userInfo }}</small>
-        </pre>
-        <pre>
-          <small>{{ info }}</small>
-        </pre>
+        <!--        <pre style="line-height: 1; margin: 0">-->
+        <!--          <small><small>{{ info }}</small></small>-->
+        <!--        </pre>-->
+        <!--        <pre style="line-height: 1; margin: 0">-->
+        <!--          <small><small>{{ userInfo }}</small></small>-->
+        <!--        </pre>-->
         <div class="profile__title">Привет, {{ name }}!</div>
         <div class="profile__subtitle">Аналитика заказов</div>
         <div class="profile__list">
+          <div class="profile__analytics">
+            <div>
+              <b>🤓</b> <br />
+              Нам требуеться немного больше заказов
+            </div>
+          </div>
           <div
             class="profile__item profile__item-1 profile__item-big text-center"
             :style="{
@@ -216,9 +222,9 @@ export default {
       .get('/auth/profile')
       .then((r) => {
         this.info = r.data
-        console.log('r', r.data)
       })
-      .catch((e) => console.log(e))
+      // eslint-disable-next-line no-console
+      .catch(console.error)
   },
   methods: {
     updateInfo(obj) {

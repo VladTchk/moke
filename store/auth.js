@@ -30,18 +30,8 @@ export const actions = {
         // eslint-disable-next-line no-console
         console.log('login')
       })
-      .catch((error) => {
-        // this.showLoginError({ title: 'AUTH', message: error.message })
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
-
-    // try {
-    //   const { data } = await axios.get('/auth/login')
-    //   commit('SET_AUTH', data)
-    // } catch (e) {
-    // eslint-disable-next-line no-console
-    // console.log(e)
+      // eslint-disable-next-line no-console
+      .catch(console.error)
   },
 }
 

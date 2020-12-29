@@ -15,14 +15,13 @@
     <div class="catalog__select">
       <label
         v-for="(mod, i) of details.trade_offers"
-        :key="mod.code"
+        :key="mod.name"
         class="catalog__select_item"
       >
         <input
           type="radio"
           :name="'goods_1' + uniqNames"
           :checked="i === currentSize"
-          :disabled="!mod.is_active"
           @change="currentSize = i"
         />
         <span>{{ mod.name.replace(item.name_1, '') }}</span>
@@ -129,19 +128,10 @@ export default {
         store_id: '',
         trade_offers: [
           {
-            created_at: '',
-            deleted_at: null,
-            id: 0,
-            is_active: true,
             name: '',
-            price_horeca: '0',
-            price_persona: '00',
-            price_retail: '00',
-            price_rrp: '00',
+            price: '0',
             product_id: 0,
             sorting: 0,
-            store_id: '010d7d96-36fb-11eb-0a80-08250017c09d',
-            updated_at: '2020-12-09T08:53:43.000000Z',
           },
         ],
         updated_at: '',
@@ -153,7 +143,7 @@ export default {
       return Math.random()
     },
     price() {
-      return this.details.trade_offers[this.currentSize].price_rrp
+      return this.details.trade_offers[this.currentSize].price
 
       // const size = this.currentSize
       // const set = this.currentSet
@@ -180,27 +170,27 @@ export default {
     // this.counts = [...Array(size)].map(() => new Array(size).fill(0))
   },
   methods: {
-    addCount() {
-      this.counts[this.currentSize][this.currentSet] += 1
-      this.counts = [...this.counts]
-      this.$store.commit('cart/SET_CART', {
-        item: this.item,
-        counts: this.counts,
-      })
-    },
-    removeCount() {
-      this.counts[this.currentSize][this.currentSet] -= 1
-      this.counts = [...this.counts]
-      const goodsLength = this.counts.flat().filter((item) => item > 0)
-      if (goodsLength.length > 0) {
-        this.$store.commit('cart/SET_CART', {
-          item: this.item,
-          counts: this.counts,
-        })
-      } else {
-        this.$store.commit('cart/DECREMENT_CART', this.item.id)
-      }
-    },
+    // addCount() {
+    //   this.counts[this.currentSize][this.currentSet] += 1
+    //   this.counts = [...this.counts]
+    //   this.$store.commit('cart/SET_CART', {
+    //     item: this.item,
+    //     counts: this.counts,
+    //   })
+    // },
+    // removeCount() {
+    //   this.counts[this.currentSize][this.currentSet] -= 1
+    //   this.counts = [...this.counts]
+    //   const goodsLength = this.counts.flat().filter((item) => item > 0)
+    //   if (goodsLength.length > 0) {
+    //     this.$store.commit('cart/SET_CART', {
+    //       item: this.item,
+    //       counts: this.counts,
+    //     })
+    //   } else {
+    //     this.$store.commit('cart/DECREMENT_CART', this.item.id)
+    //   }
+    // },
   },
 }
 </script>

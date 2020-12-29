@@ -2,7 +2,7 @@
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *::-webkit-input-placeholder {
@@ -223,4 +223,11 @@ svg.icon {
 
 .text-right {
   text-align: right;
+}
+
+
+pre {
+  line-height: 1;
+  margin: 0;
+  font-size: 1.2rem;
 }

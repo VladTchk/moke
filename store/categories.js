@@ -25,9 +25,6 @@ export const actions = {
     }
   },
   async FETCH_SIBLING({ commit }, { brand, category }) {
-    // const url = category
-    //   ? `/categories/${brand}/${category}`
-    //   : `/categories/${brand}`
     const url = `/categories/${brand}${category ? `/${category}` : ''}`
     try {
       const { data } = await axios.get(url)
