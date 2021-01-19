@@ -2016,8 +2016,10 @@ body.overflow {
 
     .catalog__select {
       flex: 0 0 27rem;
+      //flex: 0 0 54rem;
       @include r($xl) {
         flex: 0 0 21rem;
+        //flex: 0 0 42rem;
       }
       @include r($md) {
         flex: 1 0 45%;
@@ -2105,6 +2107,10 @@ body.overflow {
     color: #fff;
     border: 0;
     box-shadow: none;
+    &[disabled]{
+      opacity: .5;
+      pointer-events: none;
+    }
   }
 
   &__price {
@@ -2401,6 +2407,7 @@ body.overflow {
       &.active {
         font-size: 2.4rem;
         color: #000;
+        pointer-events: none;
       }
     }
   }
@@ -2449,6 +2456,9 @@ body.overflow {
       &.active {
         color: #b19266;
       }
+      &.active {
+        pointer-events: none;
+      }
     }
   }
 
@@ -2461,10 +2471,10 @@ body.overflow {
     &_item {
       border-radius: 1rem;
       box-shadow: 0 0 1rem 0 rgba(0, 3, 6, 0.03);
-      background-color: #fff;
+      background: #fff no-repeat right center / cover;
       margin: 0 2.5rem 2.5rem 0;
       flex: 1 0 auto;
-      //min-width: 35%;
+      min-width: 30rem;
       padding: 1.8rem 1.5rem 1.5rem;
     }
 
@@ -2474,6 +2484,11 @@ body.overflow {
       text-align: left;
       color: #000;
       margin-bottom: .4rem;
+      text-decoration: none;
+      display: block;
+      &:hover{
+        text-decoration: underline;
+      }
 
       img {
         max-width: 3.1rem;

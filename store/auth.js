@@ -27,8 +27,6 @@ export const actions = {
         localStorage.setItem('access_token', res.data.token)
         commit('SET_AUTH', res.data)
         commit('SET_FORM_STATE', false)
-        // eslint-disable-next-line no-console
-        console.log('login')
       })
       // eslint-disable-next-line no-console
       .catch(console.error)

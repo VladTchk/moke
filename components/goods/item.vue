@@ -1,103 +1,79 @@
 <template>
   <div class="catalog__goods">
     <div class="catalog__name">
-      <span>id:{{ item.id }} {{ item.name_1 }} </span>
-      <!--      <span>-->
-      <!--        <small>{{ item.taste.basic }}</small>-->
-      <!--      </span>-->
+      <span>{{ item.name }}</span>
     </div>
-
-    <!--    <div v-for="mod of details.trade_offers" :key="mod.code">-->
-    <!--      id: {{ mod.id }},-->
-    <!--      name: {{ mod.name.replace(item.name_1, '') }}-->
-    <!--    </div>-->
 
     <div class="catalog__select">
       <label
-        v-for="(mod, i) of details.trade_offers"
-        :key="mod.name"
+        v-for="(value, key) of tradeOffers"
+        :key="key"
         class="catalog__select_item"
       >
         <input
           type="radio"
-          :name="'goods_1' + uniqNames"
-          :checked="i === currentSize"
-          @change="currentSize = i"
+          :name="`goods_${uniqNames}`"
+          :checked="key === currentWeight"
+          @change="changeWeight(key)"
         />
-        <span>{{ mod.name.replace(item.name_1, '') }}</span>
+        <span>{{ key }}</span>
       </label>
     </div>
 
-    <div class="catalog__price">{{ price }} ₽</div>
+    <div class="catalog__select">
+      <label
+        v-for="(value, key) of currentLineList"
+        :key="key"
+        class="catalog__select_item"
+      >
+        <input
+          type="radio"
+          :name="`goods_${currentWeight}_${uniqNames}`"
+          :checked="key === currentLine"
+          @change="changeLine(key)"
+        />
+        <span>{{ key }}</span>
+      </label>
+    </div>
 
-    <!--    <div class="catalog__select">-->
-    <!--      <label-->
-    <!--        v-for="(info, i) in item.variations"-->
-    <!--        :key="i"-->
-    <!--        class="catalog__select_item"-->
-    <!--      >-->
-    <!--        <input-->
-    <!--          type="radio"-->
-    <!--          :name="'goods_1' + uniqNames"-->
-    <!--          :checked="i === currentSize"-->
-    <!--          @change="currentSize = i"-->
-    <!--        />-->
-    <!--        <span>{{ info.size }}</span>-->
-    <!--      </label>-->
-    <!--    </div>-->
+    <div v-show="currentCount > 0" class="catalog__count count">
+      <button class="count__minus" type="button" @click="removeCount">
+        <svg class="icon">
+          <use xlink:href="#minus" />
+        </svg>
+      </button>
+      <label class="count__label">
+        <input
+          type="text"
+          class="count__input"
+          :value="currentCount"
+          readonly
+        />
+      </label>
+      <button class="count__plus" type="button" @click="addCount">
+        <svg class="icon">
+          <use xlink:href="#plus" />
+        </svg>
+      </button>
+    </div>
+    <!--    currentOffers.id-->
+    <!--    :disabled="!currentOffers.id"-->
+    <button
+      v-show="currentCount <= 0"
+      :disabled="currentId === 0"
+      class="catalog__buy"
+      type="button"
+      @click="addCount"
+    >
+      В корзину
+    </button>
 
-    <!--    <div class="catalog__select">-->
-    <!--      <label-->
-    <!--        v-for="(info, i) in item.variations[0].set"-->
-    <!--        :key="info.set"-->
-    <!--        class="catalog__select_item"-->
-    <!--      >-->
-    <!--        <input-->
-    <!--          type="radio"-->
-    <!--          :name="'goods_2' + uniqNames"-->
-    <!--          :checked="i === currentSet"-->
-    <!--          @change="currentSet = i"-->
-    <!--        />-->
-    <!--        <span>{{ info.name }}</span>-->
-    <!--      </label>-->
-    <!--    </div>-->
-
-    <!--    <div v-show="currentCount > 0" class="catalog__count count">-->
-    <!--      <button class="count__minus" type="button" @click="removeCount">-->
-    <!--        <svg class="icon">-->
-    <!--          <use xlink:href="#minus" />-->
-    <!--        </svg>-->
-    <!--      </button>-->
-    <!--      <label class="count__label">-->
-    <!--        <input-->
-    <!--          type="text"-->
-    <!--          class="count__input"-->
-    <!--          :value="currentCount"-->
-    <!--          readonly-->
-    <!--        />-->
-    <!--      </label>-->
-    <!--      <button class="count__plus" type="button" @click="addCount">-->
-    <!--        <svg class="icon">-->
-    <!--          <use xlink:href="#plus" />-->
-    <!--        </svg>-->
-    <!--      </button>-->
-    <!--    </div>-->
-
-    <!--    <button-->
-    <!--      v-show="currentCount <= 0"-->
-    <!--      class="catalog__buy"-->
-    <!--      type="button"-->
-    <!--      @click="addCount"-->
-    <!--    >-->
-    <!--      В корзину-->
-    <!--    </button>-->
-
-    <!--    <div class="catalog__price">{{ price }} ₽</div>-->
+    <div class="catalog__price">{{ currentPrice }}</div>
   </div>
 </template>
 
 <script>
-import axios from '@/plugins/axios'
+// import axios from '@/plugins/axios'
 
 export default {
   name: 'Item',
@@ -109,41 +85,68 @@ export default {
   },
   data() {
     return {
-      currentSize: 0,
+      currentWeight: '',
+      currentLine: '',
+      // price: 0,
       details: {
-        brand_id: 0,
-        category_id: 0,
-        code: '0',
-        created_at: '0',
-        deleted_at: null,
-        description: null,
-        id: 0,
-        meta_description: null,
-        meta_keywords: null,
-        meta_title: null,
-        name_1: '',
-        name_2: '',
-        slug: '',
-        sorting: 0,
-        store_id: '',
-        trade_offers: [
-          {
-            name: '',
-            price: '0',
-            product_id: 0,
-            sorting: 0,
-          },
-        ],
-        updated_at: '',
+        // brand_id: 0,
+        // category_id: 0,
+        // code: '0',
+        // created_at: '0',
+        // deleted_at: null,
+        // description: null,
+        // id: 0,
+        // meta_description: null,
+        // meta_keywords: null,
+        // meta_title: null,
+        // name_1: '',
+        // name_2: '',
+        // slug: '',
+        // sorting: 0,
+        // store_id: '',
+        // trade_offers: [
+        //   {
+        //     id: 0,
+        //     name: '',
+        //     price: '0',
+        //     product_id: 0,
+        //     sorting: 0,
+        //   },
+        // ],
+        // updated_at: '',
       },
     }
   },
   computed: {
     uniqNames() {
-      return Math.random()
+      return Math.trunc(Math.random() * 1000)
     },
-    price() {
-      return this.details.trade_offers[this.currentSize].price
+    tradeOffers() {
+      return this.filterProps(this.item.tradeOffers)
+    },
+    currentLineList() {
+      return this.tradeOffers[this.currentWeight]
+    },
+    currentOffers() {
+      if (this.currentWeight && this.currentLine) {
+        return this.tradeOffers[this.currentWeight][this.currentLine]
+      }
+      return null
+    },
+    currentId() {
+      return this.currentOffers ? this.currentOffers.id : 0
+    },
+    currentPrice() {
+      return this.currentOffers
+        ? `${Math.trunc(+this.currentOffers.price)} ₽`
+        : ''
+      // : Object.values(Object.values(this.tradeOffers)[0])[0].price
+    },
+    currentCount() {
+      return 0
+    },
+    price2() {
+      return 0
 
       // const size = this.currentSize
       // const set = this.currentSet
@@ -155,42 +158,92 @@ export default {
     // },
   },
   mounted() {
-    axios
-      .get(`/product/${this.item.id}`)
-      .then((res) => {
-        // eslint-disable-next-line no-console
-        console.log('res.data)', res.data)
-        this.details = res.data
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
+    // axios
+    //   .get(`/product/${this.item.id}`)
+    //   .then((res) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log('res.data)', res.data)
+    //     this.details = {
+    //       ...res.data,
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log(error)
+    //   })
     // const size = this.item.variations.length
     // this.counts = [...Array(size)].map(() => new Array(size).fill(0))
   },
   methods: {
-    // addCount() {
-    //   this.counts[this.currentSize][this.currentSet] += 1
-    //   this.counts = [...this.counts]
-    //   this.$store.commit('cart/SET_CART', {
-    //     item: this.item,
-    //     counts: this.counts,
-    //   })
-    // },
-    // removeCount() {
-    //   this.counts[this.currentSize][this.currentSet] -= 1
-    //   this.counts = [...this.counts]
-    //   const goodsLength = this.counts.flat().filter((item) => item > 0)
-    //   if (goodsLength.length > 0) {
-    //     this.$store.commit('cart/SET_CART', {
-    //       item: this.item,
-    //       counts: this.counts,
-    //     })
-    //   } else {
-    //     this.$store.commit('cart/DECREMENT_CART', this.item.id)
-    //   }
-    // },
+    changeWeight(key) {
+      this.currentWeight = key
+    },
+    changeLine(key) {
+      this.currentLine = key
+    },
+    filterProps(arr) {
+      const newObj = {}
+      arr.forEach((item, idx) => {
+        const obj2 = {}
+        item.properties.forEach((props) => {
+          if (props.name === 'Линейка') {
+            obj2.line = props.value
+          }
+          if (props.name === 'Вес (граммы)') {
+            obj2.weight = props.value
+          }
+        })
+        if (!newObj[obj2.weight]) {
+          newObj[obj2.weight] = {}
+        }
+        newObj[obj2.weight][obj2.line] = {
+          id: item.id,
+          price: item.price,
+          count: 0,
+        }
+
+        if (idx === 0) {
+          this.currentWeight = obj2.weight
+          this.currentLine = obj2.line
+        }
+      })
+
+      return newObj
+    },
+    addCount() {
+      const id = this.currentOffers.id
+      this.$store
+        .dispatch('cart/ADD_ITEM', id)
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          console.log('res', res)
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log('error', error)
+        })
+
+      alert(`Добавлен товар с id: ${id}`)
+      //   this.counts[this.currentSize][this.currentSet] += 1
+      //   this.counts = [...this.counts]
+      //   this.$store.commit('cart/SET_CART', {
+      //     item: this.item,
+      //     counts: this.counts,
+      //   })
+    },
+    removeCount() {
+      //   this.counts[this.currentSize][this.currentSet] -= 1
+      //   this.counts = [...this.counts]
+      //   const goodsLength = this.counts.flat().filter((item) => item > 0)
+      //   if (goodsLength.length > 0) {
+      //     this.$store.commit('cart/SET_CART', {
+      //       item: this.item,
+      //       counts: this.counts,
+      //     })
+      //   } else {
+      //     this.$store.commit('cart/DECREMENT_CART', this.item.id)
+      //   }
+    },
   },
 }
 </script>

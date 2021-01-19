@@ -36,17 +36,10 @@ export default {
   //     error({ message: 'Faq.json not found', statusCode: 404 })
   //   }
   // },
-
   async fetch({ store }) {
     if (store.getters['faq/FAGS_LIST'].length === 0) {
       await store.dispatch('faq/FETCH')
     }
-    // try {
-    //   const { data } = await axios.get('http://fixmoke.ru/api/faq/', {})
-    // console.dir(data)
-    // } catch (e) {
-    // console.log(e)
-    // }
   },
   computed: {
     sections() {

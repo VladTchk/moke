@@ -1,33 +1,54 @@
 <template>
   <Fragment>
     <ul v-if="getList.length > 0" class="list__goods">
-      <li v-for="item in getList" :key="item.id" class="list__goods_item">
-        <div class="list__goods_title">{{ item.name }}</div>
+      <li
+        v-for="item in getList"
+        :key="item.id"
+        class="list__goods_item"
+        :style="{ backgroundImage: `url(${item.background})` }"
+      >
+        <div v-if="item.icon_url" class="list__goods_title">
+          <img
+            v-if="item.icon_url"
+            :src="item.icon_url"
+            :alt="item.title"
+            width="30"
+          />
+        </div>
+        <a
+          :href="item.url"
+          :class="{
+            list__goods_title: !item.icon_url,
+            list__goods_size: item.icon_url,
+          }"
+        >
+          {{ item.title }}
+        </a>
+
         <div v-if="item.prefilters" class="list__goods_size">
-          <span v-for="(sib, index) in item.prefilters" :key="sib.url">
+          <span
+            v-for="(sib, index) in item.prefilters"
+            :key="sib.name + sib.url"
+          >
+            {{ index === 0 ? '' : '/' }}
             <a :href="sib.url">{{ sib.name }}</a>
-            {{ index === 0 ? '/' : '' }}
           </span>
         </div>
-        <div class="list__goods_info">
+        <div v-if="false" class="list__goods_info">
           <span>{{ item.pcount }} товаров</span>
           <span>{{ item.tocount }} модификаций</span>
-          <!--          <span v-if="item.prefilters">-->
-          <!--            <a v-for="sib in item.prefilters" :key="sib.url" :href="sib.url">{{-->
-          <!--              sib.name-->
-          <!--            }}</a>-->
-          <!--          </span>-->
         </div>
       </li>
     </ul>
-    <!--    <div v-else class="list__goods_title">-->
-    <!--      <div>Нет товара для бренда №{{ $route.query.brand }}</div>-->
-    <!--    </div>-->
+    <div v-else class="list__goods_title">
+      <div>Нет банеров для бренда №{{ $route.query.brand }}</div>
+    </div>
   </Fragment>
 </template>
 
 <script>
 import { Fragment } from 'vue-fragment'
+
 export default {
   name: 'Sibling',
   components: { Fragment },

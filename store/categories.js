@@ -15,24 +15,28 @@ export const mutations = {
 }
 
 export const actions = {
-  async FETCH({ commit }) {
-    try {
-      const { data } = await axios.get('/categories-tree')
-      commit('SET_CATEGORIES', data)
-    } catch (e) {
+  FETCH({ commit }) {
+    axios
+      .get('/categories-tree')
+      .then((res) => {
+        commit('SET_CATEGORIES', res.data)
+      })
       // eslint-disable-next-line no-console
-      console.log(e)
-    }
+      .catch(console.log)
   },
-  async FETCH_SIBLING({ commit }, { brand, category }) {
-    const url = `/categories/${brand}${category ? `/${category}` : ''}`
-    try {
-      const { data } = await axios.get(url)
-      commit('SET_SIBLING', data)
-    } catch (e) {
+  FETCH_SIBLING({ commit }, { brand, category }) {
+    axios
+      .get('/categories/banners', {
+        params: {
+          brands: brand,
+          categories: category,
+        },
+      })
+      .then((res) => {
+        commit('SET_SIBLING', res.data)
+      })
       // eslint-disable-next-line no-console
-      console.log(e)
-    }
+      .catch(console.log)
   },
 }
 

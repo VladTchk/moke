@@ -4,50 +4,8 @@
       <div class="order__title">Оформление заказа</div>
       <div class="order__subtitle">1. Введите Ваши данные</div>
       <div class="order__grid">
-        <label class="order__label order__row-2">
-          <input
-            class="input"
-            type="text"
-            name=""
-            placeholder="Ваше Имя"
-            required
-          />
-        </label>
-        <label class="order__label order__row-2">
-          <input
-            class="input"
-            type="text"
-            name=""
-            placeholder="Ваша Фамилия"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="tel"
-            name=""
-            placeholder="Номер телефона"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="email"
-            name=""
-            placeholder="Почтовый адрес Email"
-            required
-          />
-        </label>
-        <div class="order__address order__row-2">
-          109341, Москва, Нижняя Красносельская, 35с49, 408
-        </div>
-        <div class="order__add order__row-2">
-          <svg class="icon">
-            <use xlink:href="#plus" />
-          </svg>
-        </div>
+        <UserInfo />
+        <Address />
       </div>
       <div class="order__wr">
         <div class="order__subtitle">2. Дата и время</div>
@@ -214,7 +172,7 @@
       </div>
 
       <div class="order__bottom order__grid">
-        <div class="order__total order__row-2">ИТОГО: 21 600 ₽</div>
+        <div class="order__total order__row-2">ИТОГО: {{ orderPrice }} ₽</div>
         <button class="order__btn gradient order__row-2" type="submit">
           Оформить заказ
         </button>
@@ -239,9 +197,17 @@
         <UserNav />
       </div>
 
+      <!--      <small>-->
+      <!--        <pre>{{ order }}</pre>-->
+      <!--      </small>-->
+
       <ul class="order__list">
-        <li v-for="i in 3" :key="i" class="order__item">
-          <div class="order__name">Barvy Orange {{ i }}</div>
+        <li
+          v-for="item in orderList"
+          :key="item.name + item.id"
+          class="order__item"
+        >
+          <div class="order__name">{{ item.name }}</div>
           <div class="order__size">100гр</div>
           <div class="order__line">Core</div>
           <div class="order__count count">
@@ -251,7 +217,12 @@
               </svg>
             </button>
             <label class="count__label">
-              <input type="text" class="count__input" value="25" readonly />
+              <input
+                type="text"
+                class="count__input"
+                :value="item.quantity"
+                readonly
+              />
             </label>
             <button class="count__plus" type="button">
               <svg class="icon">
@@ -259,7 +230,7 @@
               </svg>
             </button>
           </div>
-          <div class="order__price">555 ₽</div>
+          <div class="order__price">{{ item.price * item.quantity }} ₽</div>
         </li>
       </ul>
     </div>
@@ -267,10 +238,28 @@
 </template>
 
 <script>
+import UserInfo from '@/components/profile/user-info'
+import Address from '@/components/profile/address'
 import UserNav from '@/components/layouts/UserNav'
 export default {
   name: 'Order',
-  components: { UserNav },
+  components: { UserNav, UserInfo, Address },
+  computed: {
+    order() {
+      return this.$store.getters['cart/CART_INFO']
+    },
+    orderList() {
+      return this.$store.getters['cart/CART_LIST']
+    },
+    orderPrice() {
+      return this.$store.getters['cart/CART_PRICE']
+    },
+  },
+  mounted() {
+    // if (!this.$store.getters['cart/CART_INFO']) {
+    this.$store.dispatch('cart/UPDATE_CART')
+    // }
+  },
   head: {
     title: 'FiXmoke - Оформление',
   },

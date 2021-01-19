@@ -8,6 +8,10 @@ export const state = () => ({
 export const mutations = {
   SET_PRODUCTS(state, products) {
     state.products = products
+    state.filters = products
+  },
+  SET_FILTERED(state, products) {
+    state.filters = products
   },
 }
 
@@ -16,30 +20,45 @@ export const actions = {
     axios
       .post('/products', filers)
       .then((res) => {
-        commit('SET_PRODUCTS', [...res.data].splice(0, 3))
+        commit('SET_PRODUCTS', [...res.data].splice(0, 4))
       })
       // eslint-disable-next-line no-console
       .catch(console.error)
+  },
+  FILTER_LIST({ commit, state }, typeSort) {
+    const list = [...state.products]
 
-    // eslint-disable-next-line no-unused-vars
-    // const { list, filters, count, type } = await this.$axios.$get(
-    //   `${process.env.baseUrl}/goods.json`
-    // )
-    // const sorted = [...list].sort((a, b) => {
-    //   const first = a.name.charAt(0).toLowerCase()
-    //   const second = b.name.charAt(0).toLowerCase()
-    //   if (first < second) {
-    //     return -1
-    //   }
-    //   if (first > second) {
-    //     return 1
-    //   }
-    //   return 0
-    // })
-    // eslint-disable-next-line no-console
-    // console.log(filters)
-    // commit('SET_GOODS', sorted)
-    // commit('SET_FILTERS', filters)
+    const sortPopular = (a, b) => a.sorting - b.sorting
+
+    const sortPrice = (a, b) =>
+      parseInt(b.tradeOffers[0].price) - parseInt(a.tradeOffers[0].price)
+
+    const sortABS = (a, b) => {
+      if (a.name < b.name) {
+        return -1
+      }
+      if (a.name > b.name) {
+        return 1
+      }
+      return 0
+    }
+
+    switch (typeSort) {
+      case 'popular':
+        list.sort(sortPopular)
+        break
+      case 'price':
+        list.sort(sortPrice)
+        break
+      case 'abc':
+        list.sort(sortABS)
+        break
+      // case 'new':
+      // list.sort(sortABS)
+      // break
+    }
+
+    commit('SET_FILTERED', list)
   },
 }
 

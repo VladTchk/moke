@@ -98,13 +98,14 @@
           <small>{{ cartList }}</small>
           <br />
         </template>
+
         <div class="catalog__sorting">
           <div class="catalog__sorting_title">Сортировать по:</div>
           <button
             class="catalog__sorting_btn"
             :class="{ active: sortType === 'popular' }"
             type="button"
-            @click="sortType = 'popular'"
+            @click="sortItem('popular')"
           >
             популярности
           </button>
@@ -112,7 +113,7 @@
             class="catalog__sorting_btn"
             :class="{ active: sortType === 'price' }"
             type="button"
-            @click="sortType = 'price'"
+            @click="sortItem('price')"
           >
             цене
           </button>
@@ -120,7 +121,7 @@
             class="catalog__sorting_btn"
             :class="{ active: sortType === 'new' }"
             type="button"
-            @click="sortType = 'new'"
+            @click="sortItem('new')"
           >
             новинкам
           </button>
@@ -128,7 +129,7 @@
             class="catalog__sorting_btn"
             :class="{ active: sortType === 'abc' }"
             type="button"
-            @click="sortType = 'abc'"
+            @click="sortItem('abc')"
           >
             алфавиту
           </button>
@@ -160,7 +161,7 @@
             <!--                {{ letterTitle(item.name[0]) }}-->
             <!--              </div>-->
             <ItemGoods
-              v-for="item in goodsFilter(productsList)"
+              v-for="item in productsList"
               :key="item.id"
               :item="item"
             />
@@ -199,11 +200,8 @@ export default {
   },
   computed: {
     productsList() {
-      return this.$store.getters['products/PRODUCTS_LIST']
+      return this.$store.getters['products/PRODUCTS_FILTERS']
     },
-    // goodsList() {
-    //   return this.$store.getters['goods/GOODS_LIST']
-    // },
     goodsFilters() {
       return []
       // return this.$store.getters['goods/GOODS_FILTERS']
@@ -223,8 +221,23 @@ export default {
     alphabet() {
       return 'abcdefghijklmnopqrstuvwxyz'.split('')
     },
+    goodsFilter() {
+      // console.log('goodsFilter', this.productsList)
+      // const filtered = [...this.productsList].sort((a, b) => {
+      //   // eslint-disable-next-line no-console
+      //   console.log(a, b)
+      //   return a.name > b.name
+      // })
+      //
+      // return filtered
+      return []
+    },
   },
   methods: {
+    sortItem(val) {
+      this.sortType = val
+      this.$store.dispatch('products/FILTER_LIST', val)
+    },
     letterTitle(letter) {
       return letter.toUpperCase() + '' + letter.toLowerCase()
     },
@@ -233,7 +246,7 @@ export default {
     //   this.lastLetter[letter.toLowerCase()] = 0
     //   return check
     // },
-    goodsFilter(list) {
+    goodsFilter__(list) {
       // eslint-disable-next-line no-console
       // console.log('selectedVal: ' + this.selectedVal)
 
@@ -246,8 +259,16 @@ export default {
 
       // eslint-disable-next-line no-console
       // console.log(filtered)
-
+      // const filtered = [...list].sort((a, b) => {
+      //   // eslint-disable-next-line no-console
+      //   console.log(a, b)
+      //   return a.name > b.name
+      // })
+      //
       // return filtered
+
+      // eslint-disable-next-line no-console
+      console.log(list[0])
       return list
     },
   },

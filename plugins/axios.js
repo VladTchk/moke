@@ -21,14 +21,12 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  // (res) => res,
   (res) => res,
   (err) => {
     // eslint-disable-next-line no-console
     console.error(err)
     const error = err.response
     if (error.status === 401) {
-      // eslint-disable-next-line no-console
       localStorage.removeItem('access_token')
       window.location.href = window.location.origin
       // location.reload()

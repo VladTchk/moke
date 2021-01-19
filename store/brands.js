@@ -14,17 +14,16 @@ export const mutations = {
 }
 
 export const actions = {
-  async FETCH({ commit }, { categories }) {
+  FETCH({ commit }, { categories }) {
     commit('CLEAN_BRANDS')
     const url = categories === '0' ? '/brands' : `/brands/${categories}`
-
-    try {
-      const { data } = await axios.get(url)
-      commit('SET_BRANDS', data.data)
-    } catch (e) {
+    axios
+      .get(url)
+      .then((res) => {
+        commit('SET_BRANDS', res.data.data)
+      })
       // eslint-disable-next-line no-console
-      console.log(e)
-    }
+      .catch(console.error)
   },
   CLEAN({ commit }) {
     commit('CLEAN_BRANDS')

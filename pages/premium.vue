@@ -7,42 +7,7 @@
         <a href="#" class="order__subtitle_link">Оформить на юр. лицо?</a>
       </div>
       <div class="order__grid">
-        <label class="order__label order__row-2">
-          <input
-            class="input"
-            type="text"
-            name=""
-            placeholder="Ваше Имя"
-            required
-          />
-        </label>
-        <label class="order__label order__row-2">
-          <input
-            class="input"
-            type="text"
-            name=""
-            placeholder="Ваша Фамилия"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="tel"
-            name=""
-            placeholder="Номер телефона"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="email"
-            name=""
-            placeholder="Почтовый адрес Email"
-            required
-          />
-        </label>
+        <UserInfo />
 
         <div class="order__save btn btn-block order__row-4 swiper-container">
           <div class="swiper-wrapper">
@@ -144,10 +109,11 @@
 </template>
 
 <script>
+import UserInfo from '@/components/profile/user-info'
 import UserNav from '@/components/layouts/UserNav'
 export default {
   name: 'OrderPremium',
-  components: { UserNav },
+  components: { UserNav, UserInfo },
   head: {
     title: 'FiXmoke - Оформление',
   },

@@ -6,7 +6,6 @@
           <nuxt-link
             :to="`/catalog`"
             class="grid__nav_link"
-            active-class="---active"
             :class="{ active: $route.path === `/catalog` }"
             exact
           >
@@ -21,7 +20,6 @@
           <nuxt-link
             :to="`/catalog/${item.id}`"
             class="grid__nav_link"
-            active-class="---active"
             :class="{ active: $route.path === `/catalog/${item.id}` }"
             exact
           >
@@ -38,11 +36,13 @@
         <UserNav />
       </div>
 
-      <Sibling
-        v-if="$route.query.brand"
-        :category="$route.params.id"
-        :brand="$route.query.brand"
-      />
+      <div>
+        <Sibling
+          v-if="$route.query.brand"
+          :category="$route.params.id"
+          :brand="$route.query.brand"
+        />
+      </div>
     </div>
   </div>
 </template>

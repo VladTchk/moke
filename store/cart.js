@@ -1,48 +1,64 @@
+import axios from '@/plugins/axios'
+
 export const state = () => ({
-  list: {},
+  info: { items: [] },
   count: 0,
+  price: 0,
 })
 
 export const mutations = {
-  // addGoods(state, list) {
-  //   state.list = list
-  // },
-  // removeGoods(state, list) {
-  //   state.list = list
-  // },
-  SET_CART: (state, { item, counts }) => {
-    const newList = { ...state.list }
-    newList[item.id] = { item, counts }
-    state.list = newList
-    state.count = Object.keys(newList).length
+  SET_CART: (state, obj) => {
+    state.info = obj
+    state.count = state.info.items.reduce((acc, item) => acc + item.quantity, 0)
+    state.price = state.info.items.reduce((acc, item) => acc + item.amount, 0)
   },
-  DECREMENT_CART: (state, id) => {
-    const newList = { ...state.list }
-    delete newList[id]
-    state.list = { ...newList }
-    state.count = Object.keys(newList).length
-    // eslint-disable-next-line no-console
-    console.dir(newList)
-    // eslint-disable-next-line no-console
-    console.dir(Object.keys(newList))
-    // Зменшити кількість або видалити
-    // if (state.cart[index].quantity > 1) {
-    //   state.cart[index].quantity--
-    // }
+}
+
+export const actions = {
+  UPDATE_CART({ commit }) {
+    return new Promise((resolve, reject) => {
+      axios
+        .get('cart')
+        .then((res) => {
+          commit('SET_CART', res.data)
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  ADD_ITEM({ commit, dispatch }, id) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post('cart/add-item', { id })
+        .then((res) => {
+          dispatch('UPDATE_CART')
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  DECREMENT_ITEM({ commit, dispatch }, id) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post('cart/drop-item', { id })
+        .then((res) => {
+          dispatch('UPDATE_CART')
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   },
 }
 
 export const getters = {
-  CART_LIST: (s) => s.list,
+  CART_INFO: (s) => s.info,
+  CART_LIST: (s) => s.info.items,
   CART_COUNT: (s) => s.count,
-}
-
-export const actions = {
-  ADD_TO_CART({ commit }, obj) {
-    commit('SET_CART', obj)
-  },
-  DECREMENT_CART_ITEM({ commit }, id) {
-    commit('DECREMENT_CART', id)
-    // commit('DECREMENT_CART', index)
-  },
+  CART_PRICE: (s) => s.price,
 }

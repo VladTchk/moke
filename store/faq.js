@@ -11,14 +11,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async FETCH({ commit }) {
-    try {
-      const { data } = await axios.get('/help/tree')
-      commit('SET_FAGS', data)
-    } catch (e) {
+  FETCH({ commit }) {
+    axios
+      .get('/help/tree')
+      .then((res) => {
+        commit('SET_FAGS', res.data)
+      })
       // eslint-disable-next-line no-console
-      console.log(e)
-    }
+      .catch(console.error)
   },
 }
 

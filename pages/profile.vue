@@ -4,64 +4,10 @@
       <div class="order__title">Личный кабинет</div>
       <div class="order__subtitle">1. Ваши данные</div>
       <div class="order__grid">
-        <label class="order__label order__row-2">
-          <input
-            v-model.lazy="name"
-            class="input"
-            type="text"
-            placeholder="Ваше Имя"
-            required
-          />
-        </label>
-        <label class="order__label order__row-2">
-          <input
-            v-model.lazy="surname"
-            class="input"
-            type="text"
-            placeholder="Ваша Фамилия"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="tel"
-            :disabled="true"
-            :value="userInfo.phone"
-            placeholder="Номер телефона"
-            required
-          />
-        </label>
-        <label class="order__label order__row-4">
-          <input
-            class="input"
-            type="email"
-            :disabled="true"
-            :value="userInfo.email"
-            placeholder="Почтовый адрес Email"
-            required
-          />
-        </label>
-
+        <UserInfo />
         <Address />
       </div>
-      <div class="order__subtitle">2. Управление подпиской</div>
-      <div class="order__grid">
-        <div class="profile__info order__row-4">
-          Аккаунт
-          <a href="#">Premium Persona</a>
-          на 1 месяц с автопродлением. <br />
-          <a href="#">Доступ к специальным ценам и уникальному сервису.</a>
-        </div>
-        <div class="profile__subscribe order__row-2">
-          <div class="profile__subscribe_title">12 345 ₽</div>
-          <a href="#" class="profile__subscribe_btn">Увеличить лимит</a>
-        </div>
-        <div class="profile__subscribe order__row-2">
-          <div class="profile__subscribe_title">28 дней</div>
-          <a href="#" class="profile__subscribe_btn">Продлить подписку</a>
-        </div>
-      </div>
+      <Subscribe />
     </form>
 
     <div class="order__right">
@@ -176,6 +122,8 @@
 
 <script>
 import UserNav from '@/components/layouts/UserNav'
+import Subscribe from '@/components/profile/subscribe'
+import UserInfo from '@/components/profile/user-info'
 import Address from '@/components/profile/address'
 import { VueSlideToggle } from 'vue-slide-toggle'
 import axios from '@/plugins/axios'
@@ -185,10 +133,9 @@ export default {
   components: {
     UserNav,
     SlideToggle: VueSlideToggle,
+    Subscribe,
     Address,
-  },
-  async fetch() {
-    await this.$store.dispatch('user/FETCH_USER')
+    UserInfo,
   },
   data() {
     return {
@@ -200,21 +147,8 @@ export default {
     userInfo() {
       return this.$store.getters['user/USER']
     },
-    name: {
-      get() {
-        return this.userInfo.name || ''
-      },
-      set(val) {
-        this.updateInfo({ name: val.trim() })
-      },
-    },
-    surname: {
-      get() {
-        return this.userInfo.surname || ''
-      },
-      set(val) {
-        this.updateInfo({ surname: val.trim() })
-      },
+    name() {
+      return this.userInfo.name || ''
     },
   },
   mounted() {
@@ -225,16 +159,6 @@ export default {
       })
       // eslint-disable-next-line no-console
       .catch(console.error)
-  },
-  methods: {
-    updateInfo(obj) {
-      const form = {
-        name: this.name,
-        surname: this.surname,
-        ...obj,
-      }
-      this.$store.dispatch('user/UPDATE_USER', form)
-    },
   },
   head: {
     title: 'FiXmoke - Личный кабинет',
